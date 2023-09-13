@@ -1,0 +1,41 @@
+syntax = "v1"
+
+info(
+	title: "插件示例接口"
+	desc: "插件示例接口"
+	author: "Northseadl"
+	email: "northseadl@outlook.com"
+	version: "v1"
+)
+
+@server(
+	middleware: PluginMiddleware
+)
+
+service PluginTemplate {
+	@handler Example
+	post /example (ExampleRequest) returns (ExampleReply)
+
+	@handler EmployeeInfo
+	get /employee/info (EmployeeInfoRequest) returns (EmployeeInfoReply)
+}
+
+type (
+	ExampleRequest {
+		SendMessage string `json:"sendMessage"`
+	}
+
+	ExampleReply {
+		ReplyMessage string `json:"replyMessage"`
+	}
+)
+
+type (
+	EmployeeInfoRequest {
+		EmployeeId string `form:"employeeId"`
+	}
+
+	EmployeeInfoReply {
+		EmployeeName string `form:"employeeName"`
+	}
+)
