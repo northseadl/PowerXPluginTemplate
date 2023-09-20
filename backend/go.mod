@@ -5,7 +5,7 @@ go 1.21
 require github.com/zeromicro/go-zero v1.5.3
 
 require (
-	github.com/artisancloud/httphelper v0.1.7 // indirect
+	github.com/artisancloud/httphelper v0.1.8 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.0 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect

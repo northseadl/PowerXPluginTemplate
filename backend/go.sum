@@ -37,6 +37,7 @@ github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAE
 github.com/antihax/optional v1.0.0/go.mod h1:uupD/76wgC+ih3iEmQUL+0Ugr19nfwCT1kdvxnR2qWY=
 github.com/artisancloud/httphelper v0.1.7 h1:RvN6/4pTavEjMO2cZWq9S+zI2Sbz0rK+KTUtiDcrs/Q=
 github.com/artisancloud/httphelper v0.1.7/go.mod h1:4xK/jD5NnrPnx/UO9PCX52PB4meubQQ3rpw7WsLRVys=
+github.com/artisancloud/httphelper v0.1.8/go.mod h1:8HCyXRM7l+CEOeyXVgri6lbeTNsx5xpAxRDbMZc5vBg=
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
 github.com/cenkalti/backoff/v4 v4.2.0 h1:HN5dHm3WBOgndBH6E8V0q2jIYIR3s9yglV8k/+MN3u4=
