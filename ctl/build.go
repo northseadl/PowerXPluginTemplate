@@ -114,6 +114,7 @@ func (b *Builder) BuildBackend(relativeDir string) error {
 	cmd.Env = append(os.Environ(), "GO111MODULE=on")
 	err = cmd.Run()
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
 

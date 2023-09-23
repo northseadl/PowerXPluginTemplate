@@ -14,6 +14,22 @@ func main() {
 		Commands: []*cli.Command{
 			{
 				Name: "build",
+				Action: func(c *cli.Context) error {
+					builder, err := NewBuilder(".")
+					if err != nil {
+						return err
+					}
+					if err = builder.CheckDependencies(); err != nil {
+						return err
+					}
+					if err = builder.BuildBackend("backend"); err != nil {
+						return err
+					}
+					if err = builder.BuildFrontend("frontend"); err != nil {
+						return err
+					}
+					return nil
+				},
 			},
 		},
 	}
