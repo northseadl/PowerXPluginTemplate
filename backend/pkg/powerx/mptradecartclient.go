@@ -49,7 +49,7 @@ func (c *MpTradeCart) AddToCart(req *types.AddToCartRequest) (*types.AddToCartRe
 func (c *MpTradeCart) UpdateCartItemQuantity(req *types.UpdateCartItemQuantityRequest) (*types.UpdateCartItemQuantityReply, error) {
 	res := &types.UpdateCartItemQuantityReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/cart/items/%s", req.ItemId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/cart/items/%v", req.ItemId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *MpTradeCart) UpdateCartItemQuantity(req *types.UpdateCartItemQuantityRe
 func (c *MpTradeCart) RemoveCartItem(req *types.RemoveCartItemRequest) (*types.RemoveCartItemReply, error) {
 	res := &types.RemoveCartItemReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/cart/items/%s", req.ItemId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/cart/items/%v", req.ItemId)).
 		Json(req).
 		Result(res)
 	if err != nil {

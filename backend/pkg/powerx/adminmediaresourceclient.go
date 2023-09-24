@@ -36,7 +36,7 @@ func (c *AdminMediaresource) CreateMediaResource() (*types.CreateMediaResourceRe
 func (c *AdminMediaresource) GetMediaResource(req *types.GetMediaResourceRequest) (*types.GetMediaResourceReply, error) {
 	res := &types.GetMediaResourceReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/media/resources/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/media/resources/%v", req.Id)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -48,7 +48,7 @@ func (c *AdminMediaresource) GetMediaResource(req *types.GetMediaResourceRequest
 func (c *AdminMediaresource) DeleteMediaResource(req *types.DeleteMediaResourceRequest) (*types.DeleteMediaResourceReply, error) {
 	res := &types.DeleteMediaResourceReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/media/resources/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/media/resources/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

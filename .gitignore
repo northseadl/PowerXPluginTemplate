@@ -1,0 +1,12 @@
+/target/frontend/api/example.ts
+/target/frontend/views/index.vue
+/target/frontend/module.ts
+/target/backend.exe
+/target/etc.yaml
+/target/info.yaml
+/target/route.json
+/.idea/.gitignore
+/.idea/modules.xml
+/.idea/PowerXPluginTemplate.iml
+/.idea/vcs.xml
+/frontend/node_modules/

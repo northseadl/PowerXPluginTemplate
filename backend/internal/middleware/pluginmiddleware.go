@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"PluginTemplate/pkg/powerx/client"
 	"net/http"
 )
 
@@ -13,8 +14,8 @@ func NewPluginMiddleware() *PluginMiddleware {
 
 func (m *PluginMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		token := server.GetServerHeaderAuthorization(r)
-		r = r.WithContext(server.WithCtxAuthorization(r.Context(), token))
+		token := client.GetServerHeaderAuthorization(r)
+		r = r.WithContext(client.WithCtxAuthorization(r.Context(), token))
 		next(w, r)
 	}
 }

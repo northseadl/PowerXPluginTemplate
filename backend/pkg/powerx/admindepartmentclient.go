@@ -13,7 +13,7 @@ type AdminDepartment struct {
 func (c *AdminDepartment) GetDepartmentTree(req *types.GetDepartmentTreeRequest) (*types.GetDepartmentTreeReply, error) {
 	res := &types.GetDepartmentTreeReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/department/department-tree/%s", req.DepId)).
+		Uri(fmt.Sprintf("/api/v1/admin/department/department-tree/%v", req.DepId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -25,7 +25,7 @@ func (c *AdminDepartment) GetDepartmentTree(req *types.GetDepartmentTreeRequest)
 func (c *AdminDepartment) GetDepartment(req *types.GetDepartmentRequest) (*types.GetDepartmentReply, error) {
 	res := &types.GetDepartmentReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%v", req.Id)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminDepartment) CreateDepartment(req *types.CreateDepartmentRequest) (
 func (c *AdminDepartment) PatchDepartment(req *types.PatchDepartmentRequest) (*types.PatchDepartmentReply, error) {
 	res := &types.PatchDepartmentReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminDepartment) PatchDepartment(req *types.PatchDepartmentRequest) (*t
 func (c *AdminDepartment) DeleteDepartment(req *types.DeleteDepartmentRequest) (*types.DeleteDepartmentReply, error) {
 	res := &types.DeleteDepartmentReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

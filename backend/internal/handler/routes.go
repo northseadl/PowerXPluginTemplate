@@ -19,11 +19,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 					Path:    "/example",
 					Handler: ExampleHandler(serverCtx),
 				},
-				{
-					Method:  http.MethodGet,
-					Path:    "/employee/info",
-					Handler: EmployeeInfoHandler(serverCtx),
-				},
 			}...,
 		),
 	)

@@ -25,7 +25,7 @@ func (c *AdminProductArtisan) ListArtisansPage(req *types.ListArtisansPageReques
 func (c *AdminProductArtisan) GetArtisan(req *types.GetArtisanRequest) (*types.GetArtisanReply, error) {
 	res := &types.GetArtisanReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/product/artisans/%s", req.ArtisanId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/artisans/%v", req.ArtisanId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminProductArtisan) CreateArtisan(req *types.CreateArtisanRequest) (*t
 func (c *AdminProductArtisan) PutArtisan(req *types.PutArtisanRequest) (*types.PutArtisanReply, error) {
 	res := &types.PutArtisanReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/product/artisans/%s", req.ArtisanId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/artisans/%v", req.ArtisanId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminProductArtisan) PutArtisan(req *types.PutArtisanRequest) (*types.P
 func (c *AdminProductArtisan) DeleteArtisan(req *types.DeleteArtisanRequest) (*types.DeleteArtisanReply, error) {
 	res := &types.DeleteArtisanReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/product/artisans/%s", req.ArtisanId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/artisans/%v", req.ArtisanId)).
 		Json(req).
 		Result(res)
 	if err != nil {

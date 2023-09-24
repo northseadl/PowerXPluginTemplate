@@ -25,7 +25,7 @@ func (c *MpTradePayment) ListPaymentsPage(req *types.ListPaymentsPageRequest) (*
 func (c *MpTradePayment) GetPayment(req *types.GetPaymentRequest) (*types.GetPaymentReply, error) {
 	res := &types.GetPaymentReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/payments/%s", req.PaymentId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/payments/%v", req.PaymentId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *MpTradePayment) CreatePaymentFromOrder(req *types.CreatePaymentFromOrde
 func (c *MpTradePayment) UpdatePayment(req *types.UpdatePaymentRequest) (*types.UpdatePaymentReply, error) {
 	res := &types.UpdatePaymentReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/payments/%s", req.PaymentId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/payments/%v", req.PaymentId)).
 		Json(req).
 		Result(res)
 	if err != nil {

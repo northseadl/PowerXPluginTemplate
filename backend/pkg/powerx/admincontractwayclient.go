@@ -61,7 +61,7 @@ func (c *AdminContractway) CreateContractWay(req *types.CreateContractWayRequest
 func (c *AdminContractway) UpdateContractWay(req *types.UpdateContractWayRequest) (*types.UpdateContractWayReply, error) {
 	res := &types.UpdateContractWayReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/contract-way/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/contract-way/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminContractway) UpdateContractWay(req *types.UpdateContractWayRequest
 func (c *AdminContractway) DeleteContractWay(req *types.DeleteContractWayRequest) (*types.DeleteContractWayReply, error) {
 	res := &types.DeleteContractWayReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/contract-way/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/contract-way/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

@@ -25,7 +25,7 @@ func (c *MpProductArtisan) ListArtisansPage(req *types.ListArtisansPageRequest) 
 func (c *MpProductArtisan) GetArtisan(req *types.GetArtisanRequest) (*types.GetArtisanReply, error) {
 	res := &types.GetArtisanReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/mp/product/artisans/%s", req.ArtisanId)).
+		Uri(fmt.Sprintf("/api/v1/mp/product/artisans/%v", req.ArtisanId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {

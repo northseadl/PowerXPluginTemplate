@@ -36,7 +36,7 @@ func (c *AdminPermission) CreateRole(req *types.CreateRoleRequest) (*types.Creat
 func (c *AdminPermission) GetRole(req *types.GetRoleRequest) (*types.GetRoleReply, error) {
 	res := &types.GetRoleReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%s", req.RoleCode)).
+		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v", req.RoleCode)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -48,7 +48,7 @@ func (c *AdminPermission) GetRole(req *types.GetRoleRequest) (*types.GetRoleRepl
 func (c *AdminPermission) PatchRole(req *types.PatchRoleReqeust) (*types.PatchRoleReply, error) {
 	res := &types.PatchRoleReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%s", req.RoleCode)).
+		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v", req.RoleCode)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -60,7 +60,7 @@ func (c *AdminPermission) PatchRole(req *types.PatchRoleReqeust) (*types.PatchRo
 func (c *AdminPermission) GetRoleEmployees(req *types.GetRoleEmployeesReqeust) (*types.GetRoleEmployeesReply, error) {
 	res := &types.GetRoleEmployeesReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%s/users", req.RoleCode)).
+		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v/users", req.RoleCode)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -72,7 +72,7 @@ func (c *AdminPermission) GetRoleEmployees(req *types.GetRoleEmployeesReqeust) (
 func (c *AdminPermission) SetRolePermissions(req *types.SetRolePermissionsRequest) (*types.SetRolePermissionsReply, error) {
 	res := &types.SetRolePermissionsReply{}
 	err := c.H.Df().Method(http.MethodPost).
-		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%s/actions/set-permissions", req.RoleCode)).
+		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v/actions/set-permissions", req.RoleCode)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -96,7 +96,7 @@ func (c *AdminPermission) ListAPI(req *types.ListAPIRequest) (*types.ListAPIRepl
 func (c *AdminPermission) SetRoleEmployees(req *types.SetRoleEmployeesRequest) (*types.SetRoleEmployeesReply, error) {
 	res := &types.SetRoleEmployeesReply{}
 	err := c.H.Df().Method(http.MethodPost).
-		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%s/actions/set-employees", req.RoleCode)).
+		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v/actions/set-employees", req.RoleCode)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -108,7 +108,7 @@ func (c *AdminPermission) SetRoleEmployees(req *types.SetRoleEmployeesRequest) (
 func (c *AdminPermission) SetUserRoles(req *types.SetUserRolesRequest) (*types.SetUserRolesReply, error) {
 	res := &types.SetUserRolesReply{}
 	err := c.H.Df().Method(http.MethodPost).
-		Uri(fmt.Sprintf("/api/v1/admin/permission/users/%s/actions/set-roles", req.UserId)).
+		Uri(fmt.Sprintf("/api/v1/admin/permission/users/%v/actions/set-roles", req.UserId)).
 		Json(req).
 		Result(res)
 	if err != nil {

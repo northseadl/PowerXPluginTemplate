@@ -1,0 +1,6 @@
+name: Example
+description: This is a plugin example
+version: 0.0.1
+meta:
+  icon: icon-plus
+  locale: 插件示例

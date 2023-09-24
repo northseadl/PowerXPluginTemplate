@@ -37,7 +37,7 @@ func (c *AdminDictionary) ListDictionaryTypes(req *types.ListDictionaryTypesPage
 func (c *AdminDictionary) GetDictionaryType(req *types.GetDictionaryTypeRequest) (*types.GetDictionaryTypeReply, error) {
 	res := &types.GetDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%s", req.DictionaryType)).
+		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%v", req.DictionaryType)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminDictionary) CreateDictionaryType(req *types.CreateDictionaryTypeRe
 func (c *AdminDictionary) UpdateDictionaryType(req *types.UpdateDictionaryTypeRequest) (*types.UpdateDictionaryTypeReply, error) {
 	res := &types.UpdateDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%s", req.Type)).
+		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%v", req.Type)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminDictionary) UpdateDictionaryType(req *types.UpdateDictionaryTypeRe
 func (c *AdminDictionary) DeleteDictionaryType(req *types.DeleteDictionaryTypeRequest) (*types.DeleteDictionaryTypeReply, error) {
 	res := &types.DeleteDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%s", req.Type)).
+		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%v", req.Type)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -97,7 +97,7 @@ func (c *AdminDictionary) ListDictionaryItems(req *types.ListDictionaryItemsRequ
 func (c *AdminDictionary) GetDictionaryItem(req *types.GetDictionaryItemRequest) (*types.GetDictionaryItemReply, error) {
 	res := &types.GetDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%s/%s", req.DictionaryType, req.DictionaryItem)).
+		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%v/%v", req.DictionaryType, req.DictionaryItem)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -121,7 +121,7 @@ func (c *AdminDictionary) CreateDictionaryItem(req *types.CreateDictionaryItemRe
 func (c *AdminDictionary) UpdateDictionaryItem(req *types.UpdateDictionaryItemRequest) (*types.UpdateDictionaryItemReply, error) {
 	res := &types.UpdateDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%s/%s", req.Key, req.Type)).
+		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%v/%v", req.Key, req.Type)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -133,7 +133,7 @@ func (c *AdminDictionary) UpdateDictionaryItem(req *types.UpdateDictionaryItemRe
 func (c *AdminDictionary) DeleteDictionaryItem(req *types.DeleteDictionaryItemRequest) (*types.DeleteDictionaryItemReply, error) {
 	res := &types.DeleteDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%s/%s", req.Key, req.Type)).
+		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%v/%v", req.Key, req.Type)).
 		Json(req).
 		Result(res)
 	if err != nil {

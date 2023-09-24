@@ -25,7 +25,7 @@ func (c *AdminTradeAddressBilling) ListBillingAddressesPage(req *types.ListBilli
 func (c *AdminTradeAddressBilling) GetBillingAddress(req *types.GetBillingAddressRequest) (*types.GetBillingAddressReply, error) {
 	res := &types.GetBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/trade/address/billing/%s", req.BillingAddressId)).
+		Uri(fmt.Sprintf("/api/v1/admin/trade/address/billing/%v", req.BillingAddressId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminTradeAddressBilling) CreateBillingAddress(req *types.CreateBilling
 func (c *AdminTradeAddressBilling) PutBillingAddress(req *types.PutBillingAddressRequest) (*types.PutBillingAddressReply, error) {
 	res := &types.PutBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/trade/address/billing/%s", req.BillingAddressId)).
+		Uri(fmt.Sprintf("/api/v1/admin/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminTradeAddressBilling) PutBillingAddress(req *types.PutBillingAddres
 func (c *AdminTradeAddressBilling) PatchBillingAddress(req *types.PatchBillingAddressRequest) (*types.PatchBillingAddressReply, error) {
 	res := &types.PatchBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/trade/address/billing/%s", req.BillingAddressId)).
+		Uri(fmt.Sprintf("/api/v1/admin/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminTradeAddressBilling) PatchBillingAddress(req *types.PatchBillingAd
 func (c *AdminTradeAddressBilling) DeleteBillingAddress(req *types.DeleteBillingAddressRequest) (*types.DeleteBillingAddressReply, error) {
 	res := &types.DeleteBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/trade/address/billing/%s", req.BillingAddressId)).
+		Uri(fmt.Sprintf("/api/v1/admin/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {

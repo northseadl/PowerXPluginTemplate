@@ -25,7 +25,7 @@ func (c *AdminProduct) ListProductsPage(req *types.ListProductsPageRequest) (*ty
 func (c *AdminProduct) GetProduct(req *types.GetProductRequest) (*types.GetProductReply, error) {
 	res := &types.GetProductReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/product/products/%s", req.ProductId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/products/%v", req.ProductId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminProduct) CreateProduct(req *types.CreateProductRequest) (*types.Cr
 func (c *AdminProduct) PutProduct(req *types.PutProductRequest) (*types.PutProductReply, error) {
 	res := &types.PutProductReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/product/products/%s", req.ProductId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/products/%v", req.ProductId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminProduct) PutProduct(req *types.PutProductRequest) (*types.PutProdu
 func (c *AdminProduct) PatchProduct(req *types.PatchProductRequest) (*types.PatchProductReply, error) {
 	res := &types.PatchProductReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/product/products/%s", req.ProductId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/products/%v", req.ProductId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminProduct) PatchProduct(req *types.PatchProductRequest) (*types.Patc
 func (c *AdminProduct) DeleteProduct(req *types.DeleteProductRequest) (*types.DeleteProductReply, error) {
 	res := &types.DeleteProductReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/product/products/%s", req.ProductId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/products/%v", req.ProductId)).
 		Json(req).
 		Result(res)
 	if err != nil {

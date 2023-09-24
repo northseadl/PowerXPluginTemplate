@@ -37,7 +37,7 @@ func (c *WebCustomerAuth) RegisterCustomerByPhone(req *types.CustomerRegisterByP
 func (c *WebCustomerAuth) UpdateCustomerProfile(req *types.UpdateCustomerProfileRequest) (*types.UpdateCustomerProfileReply, error) {
 	res := &types.UpdateCustomerProfileReply{}
 	err := c.H.Df().Method(http.MethodPost).
-		Uri(fmt.Sprintf("/api/v1/web/customer/updateCustomerProfile/%s", req.CustomerId)).
+		Uri(fmt.Sprintf("/api/v1/web/customer/updateCustomerProfile/%v", req.CustomerId)).
 		Json(req).
 		Result(res)
 	if err != nil {

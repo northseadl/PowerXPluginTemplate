@@ -25,7 +25,7 @@ func (c *AdminProductSku) ListSKUPage(req *types.ListSKUPageRequest) (*types.Lis
 func (c *AdminProductSku) GetSKU(req *types.GetSKURequest) (*types.GetSKUReply, error) {
 	res := &types.GetSKUReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%s", req.SKUId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%v", req.SKUId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminProductSku) ConfigSKU(req *types.ConfigSKURequest) (*types.ConfigS
 func (c *AdminProductSku) PutSKU(req *types.PutSKURequest) (*types.PutSKUReply, error) {
 	res := &types.PutSKUReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%s", req.SKUId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%v", req.SKUId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminProductSku) PutSKU(req *types.PutSKURequest) (*types.PutSKUReply, 
 func (c *AdminProductSku) PatchSKU(req *types.PatchSKURequest) (*types.PatchSKUReply, error) {
 	res := &types.PatchSKUReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%s", req.SKUId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%v", req.SKUId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -85,7 +85,7 @@ func (c *AdminProductSku) PatchSKU(req *types.PatchSKURequest) (*types.PatchSKUR
 func (c *AdminProductSku) DeleteSKU(req *types.DeleteSKURequest) (*types.DeleteSKUReply, error) {
 	res := &types.DeleteSKUReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%s", req.SKUId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%v", req.SKUId)).
 		Json(req).
 		Result(res)
 	if err != nil {

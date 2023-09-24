@@ -5,6 +5,7 @@ const Example: AppRouteRecordRaw = {
   path: '/example',
   name: 'Example',
   component: PLUGIN_LAYOUT,
+  redirect: '/example/index',
   meta: {
     locale: 'menu.exmaple',
     icon: 'icon-settings',

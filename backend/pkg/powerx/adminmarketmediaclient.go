@@ -37,7 +37,7 @@ func (c *AdminMarketMedia) CreateMedia(req *types.CreateMediaRequest) (*types.Cr
 func (c *AdminMarketMedia) UpdateMedia(req *types.UpdateMediaRequest) (*types.UpdateMediaReply, error) {
 	res := &types.UpdateMediaReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%s", req.MediaId)).
+		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%v", req.MediaId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminMarketMedia) UpdateMedia(req *types.UpdateMediaRequest) (*types.Up
 func (c *AdminMarketMedia) GetMedia(req *types.GetMediaRequest) (*types.GetMediaReply, error) {
 	res := &types.GetMediaReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%s", req.MediaId)).
+		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%v", req.MediaId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminMarketMedia) GetMedia(req *types.GetMediaRequest) (*types.GetMedia
 func (c *AdminMarketMedia) DeleteMedia(req *types.DeleteMediaRequest) (*types.DeleteMediaReply, error) {
 	res := &types.DeleteMediaReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%s", req.MediaId)).
+		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%v", req.MediaId)).
 		Json(req).
 		Result(res)
 	if err != nil {

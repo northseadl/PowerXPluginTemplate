@@ -13,7 +13,7 @@ type AdminCustomerdomainCustomer struct {
 func (c *AdminCustomerdomainCustomer) GetCustomer(req *types.GetCustomerReqeuest) (*types.GetCustomerReply, error) {
 	res := &types.GetCustomerReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v", req.Id)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminCustomerdomainCustomer) CreateCustomer(req *types.CreateCustomerRe
 func (c *AdminCustomerdomainCustomer) PutCustomer(req *types.PutCustomerRequest) (*types.PutCustomerReply, error) {
 	res := &types.PutCustomerReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%s", req.CustomerId)).
+		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v", req.CustomerId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminCustomerdomainCustomer) PutCustomer(req *types.PutCustomerRequest)
 func (c *AdminCustomerdomainCustomer) PatchCustomer(req *types.PatchCustomerRequest) (*types.PatchCustomerReply, error) {
 	res := &types.PatchCustomerReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%s", req.CustomerId)).
+		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v", req.CustomerId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminCustomerdomainCustomer) PatchCustomer(req *types.PatchCustomerRequ
 func (c *AdminCustomerdomainCustomer) DeleteCustomer(req *types.DeleteCustomerRequest) (*types.DeleteCustomerReply, error) {
 	res := &types.DeleteCustomerReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -85,7 +85,7 @@ func (c *AdminCustomerdomainCustomer) DeleteCustomer(req *types.DeleteCustomerRe
 func (c *AdminCustomerdomainCustomer) AssignCustomerToEmployee(req *types.AssignCustomerToEmployeeRequest) (*types.AssignCustomerToEmployeeReply, error) {
 	res := &types.AssignCustomerToEmployeeReply{}
 	err := c.H.Df().Method(http.MethodPost).
-		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%s/actions/employees", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v/actions/employees", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

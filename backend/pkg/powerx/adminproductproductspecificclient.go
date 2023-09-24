@@ -25,7 +25,7 @@ func (c *AdminProductProductspecific) ListProductSpecificPage(req *types.ListPro
 func (c *AdminProductProductspecific) GetProductSpecific(req *types.GetProductSpecificRequest) (*types.GetProductSpecificReply, error) {
 	res := &types.GetProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%s", req.ProductSpecificId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%v", req.ProductSpecificId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminProductProductspecific) ConfigProductSpecific(req *types.ConfigPro
 func (c *AdminProductProductspecific) PutProductSpecific(req *types.PutProductSpecificRequest) (*types.PutProductSpecificReply, error) {
 	res := &types.PutProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%s", req.ProductSpecificId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%v", req.ProductSpecificId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminProductProductspecific) PutProductSpecific(req *types.PutProductSp
 func (c *AdminProductProductspecific) PatchProductSpecific(req *types.PatchProductSpecificRequest) (*types.PatchProductSpecificReply, error) {
 	res := &types.PatchProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%s", req.ProductSpecificId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%v", req.ProductSpecificId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -85,7 +85,7 @@ func (c *AdminProductProductspecific) PatchProductSpecific(req *types.PatchProdu
 func (c *AdminProductProductspecific) DeleteProductSpecific(req *types.DeleteProductSpecificRequest) (*types.DeleteProductSpecificReply, error) {
 	res := &types.DeleteProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%s", req.ProductSpecificId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%v", req.ProductSpecificId)).
 		Json(req).
 		Result(res)
 	if err != nil {

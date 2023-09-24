@@ -1,6 +1,7 @@
 package main
 
 import (
+	"PowerXPluginTemplate/ctl/plugin"
 	"fmt"
 	"os"
 
@@ -12,25 +13,7 @@ func main() {
 		Name:  "pluginctl",
 		Usage: "pluginctl",
 		Commands: []*cli.Command{
-			{
-				Name: "build",
-				Action: func(c *cli.Context) error {
-					builder, err := NewBuilder(".")
-					if err != nil {
-						return err
-					}
-					if err = builder.CheckDependencies(); err != nil {
-						return err
-					}
-					if err = builder.BuildBackend("backend"); err != nil {
-						return err
-					}
-					if err = builder.BuildFrontend("frontend"); err != nil {
-						return err
-					}
-					return nil
-				},
-			},
+			plugin.BuildCmd,
 		},
 	}
 

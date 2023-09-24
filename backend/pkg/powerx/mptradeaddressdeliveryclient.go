@@ -25,7 +25,7 @@ func (c *MpTradeAddressDelivery) ListDeliveryAddressesPage(req *types.ListDelive
 func (c *MpTradeAddressDelivery) GetDeliveryAddress(req *types.GetDeliveryAddressRequest) (*types.GetDeliveryAddressReply, error) {
 	res := &types.GetDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/address/delivery/%s", req.DeliveryAddressId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/address/delivery/%v", req.DeliveryAddressId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *MpTradeAddressDelivery) CreateDeliveryAddress(req *types.CreateDelivery
 func (c *MpTradeAddressDelivery) PutDeliveryAddress(req *types.PutDeliveryAddressRequest) (*types.PutDeliveryAddressReply, error) {
 	res := &types.PutDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/address/delivery/%s", req.DeliveryAddressId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/address/delivery/%v", req.DeliveryAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *MpTradeAddressDelivery) PutDeliveryAddress(req *types.PutDeliveryAddres
 func (c *MpTradeAddressDelivery) PatchDeliveryAddress(req *types.PatchDeliveryAddressRequest) (*types.PatchDeliveryAddressReply, error) {
 	res := &types.PatchDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/address/delivery/%s", req.DeliveryAddressId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/address/delivery/%v", req.DeliveryAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *MpTradeAddressDelivery) PatchDeliveryAddress(req *types.PatchDeliveryAd
 func (c *MpTradeAddressDelivery) DeleteDeliveryAddress(req *types.DeleteDeliveryAddressRequest) (*types.DeleteDeliveryAddressReply, error) {
 	res := &types.DeleteDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/address/delivery/%s", req.DeliveryAddressId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/address/delivery/%v", req.DeliveryAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {

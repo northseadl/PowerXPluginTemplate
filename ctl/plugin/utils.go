@@ -1,6 +1,7 @@
-package main
+package plugin
 
 import (
+	"archive/zip"
 	"errors"
 	"fmt"
 	"io"
@@ -169,4 +170,47 @@ func copyFile(srcPath, dstPath string) error {
 	}
 
 	return nil
+}
+
+func compressToZip(dir string, name string) error {
+	zipFile, err := os.Create(name + ".zip")
+	if err != nil {
+		return err
+	}
+	defer zipFile.Close()
+
+	zipWriter := zip.NewWriter(zipFile)
+	defer zipWriter.Close()
+
+	err = filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		if info.IsDir() {
+			return nil
+		}
+
+		file, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+		defer file.Close()
+
+		header, err := zip.FileInfoHeader(info)
+		if err != nil {
+			return err
+		}
+		header.Name, _ = filepath.Rel(dir, path)
+
+		writer, err := zipWriter.CreateHeader(header)
+		if err != nil {
+			return err
+		}
+
+		_, err = io.Copy(writer, file)
+		return err
+	})
+
+	return err
 }

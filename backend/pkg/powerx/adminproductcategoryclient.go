@@ -25,7 +25,7 @@ func (c *AdminProductCategory) ListProductCategoryTree(req *types.ListProductCat
 func (c *AdminProductCategory) GetProductCategory(req *types.GetProductCategoryRequest) (*types.GetProductCategoryReply, error) {
 	res := &types.GetProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%s", req.ProductCategoryId)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%v", req.ProductCategoryId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminProductCategory) CreateProductCategory(req *types.CreateProductCat
 func (c *AdminProductCategory) UpdateProductCategory(req *types.UpdateProductCategoryRequest) (*types.UpdateProductCategoryReply, error) {
 	res := &types.UpdateProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminProductCategory) UpdateProductCategory(req *types.UpdateProductCat
 func (c *AdminProductCategory) PatchProductCategory(req *types.PatchProductCategoryRequest) (*types.PatchProductCategoryReply, error) {
 	res := &types.PatchProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminProductCategory) PatchProductCategory(req *types.PatchProductCateg
 func (c *AdminProductCategory) DeleteProductCategory(req *types.DeleteProductCategoryRequest) (*types.DeleteProductCategoryReply, error) {
 	res := &types.DeleteProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

@@ -25,7 +25,7 @@ func (c *MpDictionary) ListDictionaryPageTypes(req *types.ListDictionaryTypesPag
 func (c *MpDictionary) GetDictionaryType(req *types.GetDictionaryTypeRequest) (*types.GetDictionaryTypeReply, error) {
 	res := &types.GetDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/web/dictionary/types/%s", req.DictionaryType)).
+		Uri(fmt.Sprintf("/api/v1/web/dictionary/types/%v", req.DictionaryType)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *MpDictionary) ListDictionaryItems(req *types.ListDictionaryItemsRequest
 func (c *MpDictionary) GetDictionaryItem(req *types.GetDictionaryItemRequest) (*types.GetDictionaryItemReply, error) {
 	res := &types.GetDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/web/dictionary/items/%s/%s", req.DictionaryType, req.DictionaryItem)).
+		Uri(fmt.Sprintf("/api/v1/web/dictionary/items/%v/%v", req.DictionaryType, req.DictionaryItem)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {

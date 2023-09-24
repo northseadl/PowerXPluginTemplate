@@ -25,7 +25,7 @@ func (c *MpTradeAddressBilling) ListBillingAddressesPage(req *types.ListBillingA
 func (c *MpTradeAddressBilling) GetBillingAddress(req *types.GetBillingAddressRequest) (*types.GetBillingAddressReply, error) {
 	res := &types.GetBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%s", req.BillingAddressId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%v", req.BillingAddressId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *MpTradeAddressBilling) CreateBillingAddress(req *types.CreateBillingAdd
 func (c *MpTradeAddressBilling) PutBillingAddress(req *types.PutBillingAddressRequest) (*types.PutBillingAddressReply, error) {
 	res := &types.PutBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%s", req.BillingAddressId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *MpTradeAddressBilling) PutBillingAddress(req *types.PutBillingAddressRe
 func (c *MpTradeAddressBilling) PatchBillingAddress(req *types.PatchBillingAddressRequest) (*types.PatchBillingAddressReply, error) {
 	res := &types.PatchBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%s", req.BillingAddressId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *MpTradeAddressBilling) PatchBillingAddress(req *types.PatchBillingAddre
 func (c *MpTradeAddressBilling) DeleteBillingAddress(req *types.DeleteBillingAddressRequest) (*types.DeleteBillingAddressReply, error) {
 	res := &types.DeleteBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%s", req.BillingAddressId)).
+		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)
 	if err != nil {

@@ -5,6 +5,7 @@ import (
 	"PluginTemplate/internal/handler"
 	"PluginTemplate/internal/svc"
 	"PluginTemplate/pkg/plugin"
+	"PluginTemplate/pkg/powerx/client"
 	"flag"
 	"fmt"
 	"github.com/zeromicro/go-zero/rest"
@@ -30,7 +31,7 @@ func main() {
 	c.RestConf = restConf
 
 	// 创建主程序请求客户端
-	client := server.NewPClient(fmt.Sprintf("http://%s", *host))
+	client := client.NewPClient(fmt.Sprintf("http://%s", *host))
 
 	ctx := svc.NewServiceContext(c, client)
 	handler.RegisterHandlers(server, ctx)

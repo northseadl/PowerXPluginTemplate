@@ -24,7 +24,7 @@ func NewPClient(endpoint string) *PClient {
 	helper, _ := httphelper.NewRequestHelper(conf)
 	helper.WithMiddleware(func(handle dataflow.RequestHandle) dataflow.RequestHandle {
 		return func(request *http.Request, response *http.Response) error {
-			if token, ok := fromCtxAuthorization(request.Context()); ok {
+			if token, ok := FromCtxAuthorization(request.Context()); ok {
 				request.Header.Set("Authorization", token)
 			}
 			return handle(request, response)

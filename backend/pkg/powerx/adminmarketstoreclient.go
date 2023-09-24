@@ -25,7 +25,7 @@ func (c *AdminMarketStore) ListStoresPage(req *types.ListStoresPageRequest) (*ty
 func (c *AdminMarketStore) GetStore(req *types.GetStoreRequest) (*types.GetStoreReply, error) {
 	res := &types.GetStoreReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%s", req.StoreId)).
+		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%v", req.StoreId)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminMarketStore) CreateStore(req *types.CreateStoreRequest) (*types.Cr
 func (c *AdminMarketStore) PutStore(req *types.PutStoreRequest) (*types.PutStoreReply, error) {
 	res := &types.PutStoreReply{}
 	err := c.H.Df().Method(http.MethodPut).
-		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%s", req.StoreId)).
+		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%v", req.StoreId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminMarketStore) PutStore(req *types.PutStoreRequest) (*types.PutStore
 func (c *AdminMarketStore) DeleteStore(req *types.DeleteStoreRequest) (*types.DeleteStoreReply, error) {
 	res := &types.DeleteStoreReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%s", req.StoreId)).
+		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%v", req.StoreId)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminMarketStore) DeleteStore(req *types.DeleteStoreRequest) (*types.De
 func (c *AdminMarketStore) AssignStoreToStoreManager(req *types.AssignStoreManagerRequest) (*types.AssignStoreManagerReply, error) {
 	res := &types.AssignStoreManagerReply{}
 	err := c.H.Df().Method(http.MethodPost).
-		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%s/actions/assign-to-store-categroy", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%v/actions/assign-to-store-categroy", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

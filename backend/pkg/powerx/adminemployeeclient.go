@@ -25,7 +25,7 @@ func (c *AdminEmployee) SyncEmployees(req *types.SyncEmployeesRequest) (*types.S
 func (c *AdminEmployee) GetEmployee(req *types.GetEmployeeRequest) (*types.GetEmployeeReply, error) {
 	res := &types.GetEmployeeReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%v", req.Id)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -61,7 +61,7 @@ func (c *AdminEmployee) CreateEmployee(req *types.CreateEmployeeRequest) (*types
 func (c *AdminEmployee) UpdateEmployee(req *types.UpdateEmployeeRequest) (*types.UpdateEmployeeReply, error) {
 	res := &types.UpdateEmployeeReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {
@@ -73,7 +73,7 @@ func (c *AdminEmployee) UpdateEmployee(req *types.UpdateEmployeeRequest) (*types
 func (c *AdminEmployee) DeleteEmployee(req *types.DeleteEmployeeRequest) (*types.DeleteEmployeeReply, error) {
 	res := &types.DeleteEmployeeReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

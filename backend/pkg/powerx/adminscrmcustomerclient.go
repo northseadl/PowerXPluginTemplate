@@ -13,7 +13,7 @@ type AdminScrmCustomer struct {
 func (c *AdminScrmCustomer) GetWeWorkCustomer(req *types.GetWeWorkCustomerRequest) (*types.GetWeWorkCustomerReply, error) {
 	res := &types.GetWeWorkCustomerReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/scrm/customer/customers/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/scrm/customer/customers/%v", req.Id)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -37,7 +37,7 @@ func (c *AdminScrmCustomer) ListWeWorkCustomers(req *types.ListWeWorkCustomersRe
 func (c *AdminScrmCustomer) PatchWeWorkCustomer(req *types.PatchWeWorkCustomerRequest) (*types.PatchWeWorkCustomerReply, error) {
 	res := &types.PatchWeWorkCustomerReply{}
 	err := c.H.Df().Method(http.MethodPatch).
-		Uri(fmt.Sprintf("/api/v1/admin/scrm/customer/customers/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/scrm/customer/customers/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

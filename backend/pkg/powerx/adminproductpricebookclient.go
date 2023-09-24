@@ -25,7 +25,7 @@ func (c *AdminProductPricebook) ListPriceBooks(req *types.ListPriceBooksPageRequ
 func (c *AdminProductPricebook) GetPriceBook(req *types.GetPriceBookRequest) (*types.GetPriceBookReply, error) {
 	res := &types.GetPriceBookReply{}
 	err := c.H.Df().Method(http.MethodGet).
-		Uri(fmt.Sprintf("/api/v1/admin/product/price-books/%s", req.PriceBook)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/price-books/%v", req.PriceBook)).
 		BindQuery(req).
 		Result(res)
 	if err != nil {
@@ -49,7 +49,7 @@ func (c *AdminProductPricebook) UpsertPriceBook(req *types.UpsertPriceBookReques
 func (c *AdminProductPricebook) DeletePriceBook(req *types.DeletePriceBookRequest) (*types.DeletePriceBookReply, error) {
 	res := &types.DeletePriceBookReply{}
 	err := c.H.Df().Method(http.MethodDelete).
-		Uri(fmt.Sprintf("/api/v1/admin/product/price-books/%s", req.Id)).
+		Uri(fmt.Sprintf("/api/v1/admin/product/price-books/%v", req.Id)).
 		Json(req).
 		Result(res)
 	if err != nil {

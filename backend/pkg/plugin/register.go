@@ -8,7 +8,7 @@ import (
 	"net/http"
 )
 
-const pluginUri = "plugin/plugins"
+const pluginUri = "plugin/v1/plugins"
 
 func RegisterPluginToHost(host string, plugin *Plugin) error {
 	pluginData, _ := json.Marshal(plugin.Data())
@@ -28,7 +28,7 @@ func RegisterPluginToHost(host string, plugin *Plugin) error {
 
 	if response.StatusCode != http.StatusOK {
 		body, _ := io.ReadAll(response.Body)
-		return fmt.Errorf("register plugin failed, status code %v", string(body))
+		return fmt.Errorf("register plugin failed, status code %v, body %s", response.StatusCode, string(body))
 	}
 
 	return nil
