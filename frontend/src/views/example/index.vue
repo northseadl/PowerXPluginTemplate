@@ -1,6 +1,6 @@
 <template>
   <div>
-    <spab>这是一个插件示例</spab>
+    <span>这是一个插件示例</span>
   </div>
 </template>
 
