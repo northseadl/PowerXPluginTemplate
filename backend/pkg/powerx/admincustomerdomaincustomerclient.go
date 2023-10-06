@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminCustomerdomainCustomer struct {
 	*PowerX
 }
 
-func (c *AdminCustomerdomainCustomer) GetCustomer(req *types.GetCustomerReqeuest) (*types.GetCustomerReply, error) {
-	res := &types.GetCustomerReply{}
+func (c *AdminCustomerdomainCustomer) GetCustomer(req *powerxtypes.GetCustomerReqeuest) (*powerxtypes.GetCustomerReply, error) {
+	res := &powerxtypes.GetCustomerReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v", req.Id)).
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminCustomerdomainCustomer) GetCustomer(req *types.GetCustomerReqeuest
 	return res, nil
 }
 
-func (c *AdminCustomerdomainCustomer) ListCustomersPage(req *types.ListCustomersPageRequest) (*types.ListCustomersPageReply, error) {
-	res := &types.ListCustomersPageReply{}
+func (c *AdminCustomerdomainCustomer) ListCustomersPage(req *powerxtypes.ListCustomersPageRequest) (*powerxtypes.ListCustomersPageReply, error) {
+	res := &powerxtypes.ListCustomersPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/customerdomain/customers/page-list").
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminCustomerdomainCustomer) ListCustomersPage(req *types.ListCustomers
 	return res, nil
 }
 
-func (c *AdminCustomerdomainCustomer) CreateCustomer(req *types.CreateCustomerRequest) (*types.CreateCustomerReply, error) {
-	res := &types.CreateCustomerReply{}
+func (c *AdminCustomerdomainCustomer) CreateCustomer(req *powerxtypes.CreateCustomerRequest) (*powerxtypes.CreateCustomerReply, error) {
+	res := &powerxtypes.CreateCustomerReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/customerdomain/customers").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminCustomerdomainCustomer) CreateCustomer(req *types.CreateCustomerRe
 	return res, nil
 }
 
-func (c *AdminCustomerdomainCustomer) PutCustomer(req *types.PutCustomerRequest) (*types.PutCustomerReply, error) {
-	res := &types.PutCustomerReply{}
+func (c *AdminCustomerdomainCustomer) PutCustomer(req *powerxtypes.PutCustomerRequest) (*powerxtypes.PutCustomerReply, error) {
+	res := &powerxtypes.PutCustomerReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v", req.CustomerId)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminCustomerdomainCustomer) PutCustomer(req *types.PutCustomerRequest)
 	return res, nil
 }
 
-func (c *AdminCustomerdomainCustomer) PatchCustomer(req *types.PatchCustomerRequest) (*types.PatchCustomerReply, error) {
-	res := &types.PatchCustomerReply{}
+func (c *AdminCustomerdomainCustomer) PatchCustomer(req *powerxtypes.PatchCustomerRequest) (*powerxtypes.PatchCustomerReply, error) {
+	res := &powerxtypes.PatchCustomerReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v", req.CustomerId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminCustomerdomainCustomer) PatchCustomer(req *types.PatchCustomerRequ
 	return res, nil
 }
 
-func (c *AdminCustomerdomainCustomer) DeleteCustomer(req *types.DeleteCustomerRequest) (*types.DeleteCustomerReply, error) {
-	res := &types.DeleteCustomerReply{}
+func (c *AdminCustomerdomainCustomer) DeleteCustomer(req *powerxtypes.DeleteCustomerRequest) (*powerxtypes.DeleteCustomerReply, error) {
+	res := &powerxtypes.DeleteCustomerReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v", req.Id)).
 		Json(req).
@@ -82,8 +82,8 @@ func (c *AdminCustomerdomainCustomer) DeleteCustomer(req *types.DeleteCustomerRe
 	return res, nil
 }
 
-func (c *AdminCustomerdomainCustomer) AssignCustomerToEmployee(req *types.AssignCustomerToEmployeeRequest) (*types.AssignCustomerToEmployeeReply, error) {
-	res := &types.AssignCustomerToEmployeeReply{}
+func (c *AdminCustomerdomainCustomer) AssignCustomerToEmployee(req *powerxtypes.AssignCustomerToEmployeeRequest) (*powerxtypes.AssignCustomerToEmployeeReply, error) {
+	res := &powerxtypes.AssignCustomerToEmployeeReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/customers/%v/actions/employees", req.Id)).
 		Json(req).

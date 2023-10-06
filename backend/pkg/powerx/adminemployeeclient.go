@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminEmployee struct {
 	*PowerX
 }
 
-func (c *AdminEmployee) SyncEmployees(req *types.SyncEmployeesRequest) (*types.SyncEmployeesReply, error) {
-	res := &types.SyncEmployeesReply{}
+func (c *AdminEmployee) SyncEmployees(req *powerxtypes.SyncEmployeesRequest) (*powerxtypes.SyncEmployeesReply, error) {
+	res := &powerxtypes.SyncEmployeesReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/employee/employees/actions/sync").
 		Json(req).
@@ -22,8 +22,8 @@ func (c *AdminEmployee) SyncEmployees(req *types.SyncEmployeesRequest) (*types.S
 	return res, nil
 }
 
-func (c *AdminEmployee) GetEmployee(req *types.GetEmployeeRequest) (*types.GetEmployeeReply, error) {
-	res := &types.GetEmployeeReply{}
+func (c *AdminEmployee) GetEmployee(req *powerxtypes.GetEmployeeRequest) (*powerxtypes.GetEmployeeReply, error) {
+	res := &powerxtypes.GetEmployeeReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%v", req.Id)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminEmployee) GetEmployee(req *types.GetEmployeeRequest) (*types.GetEm
 	return res, nil
 }
 
-func (c *AdminEmployee) ListEmployees(req *types.ListEmployeesRequest) (*types.ListEmployeesReply, error) {
-	res := &types.ListEmployeesReply{}
+func (c *AdminEmployee) ListEmployees(req *powerxtypes.ListEmployeesRequest) (*powerxtypes.ListEmployeesReply, error) {
+	res := &powerxtypes.ListEmployeesReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/employee/employees").
 		BindQuery(req).
@@ -46,8 +46,8 @@ func (c *AdminEmployee) ListEmployees(req *types.ListEmployeesRequest) (*types.L
 	return res, nil
 }
 
-func (c *AdminEmployee) CreateEmployee(req *types.CreateEmployeeRequest) (*types.CreateEmployeeReply, error) {
-	res := &types.CreateEmployeeReply{}
+func (c *AdminEmployee) CreateEmployee(req *powerxtypes.CreateEmployeeRequest) (*powerxtypes.CreateEmployeeReply, error) {
+	res := &powerxtypes.CreateEmployeeReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/employee/employees").
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminEmployee) CreateEmployee(req *types.CreateEmployeeRequest) (*types
 	return res, nil
 }
 
-func (c *AdminEmployee) UpdateEmployee(req *types.UpdateEmployeeRequest) (*types.UpdateEmployeeReply, error) {
-	res := &types.UpdateEmployeeReply{}
+func (c *AdminEmployee) UpdateEmployee(req *powerxtypes.UpdateEmployeeRequest) (*powerxtypes.UpdateEmployeeReply, error) {
+	res := &powerxtypes.UpdateEmployeeReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%v", req.Id)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminEmployee) UpdateEmployee(req *types.UpdateEmployeeRequest) (*types
 	return res, nil
 }
 
-func (c *AdminEmployee) DeleteEmployee(req *types.DeleteEmployeeRequest) (*types.DeleteEmployeeReply, error) {
-	res := &types.DeleteEmployeeReply{}
+func (c *AdminEmployee) DeleteEmployee(req *powerxtypes.DeleteEmployeeRequest) (*powerxtypes.DeleteEmployeeReply, error) {
+	res := &powerxtypes.DeleteEmployeeReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/employee/employees/%v", req.Id)).
 		Json(req).
@@ -82,8 +82,8 @@ func (c *AdminEmployee) DeleteEmployee(req *types.DeleteEmployeeRequest) (*types
 	return res, nil
 }
 
-func (c *AdminEmployee) ResetPassword(req *types.ResetPasswordRequest) (*types.ResetPasswordReply, error) {
-	res := &types.ResetPasswordReply{}
+func (c *AdminEmployee) ResetPassword(req *powerxtypes.ResetPasswordRequest) (*powerxtypes.ResetPasswordReply, error) {
+	res := &powerxtypes.ResetPasswordReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/employee/employees/actions/reset-password").
 		Json(req).

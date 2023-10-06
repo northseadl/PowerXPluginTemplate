@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminProduct struct {
 	*PowerX
 }
 
-func (c *AdminProduct) ListProductsPage(req *types.ListProductsPageRequest) (*types.ListProductsPageReply, error) {
-	res := &types.ListProductsPageReply{}
+func (c *AdminProduct) ListProductsPage(req *powerxtypes.ListProductsPageRequest) (*powerxtypes.ListProductsPageReply, error) {
+	res := &powerxtypes.ListProductsPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/product/products/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminProduct) ListProductsPage(req *types.ListProductsPageRequest) (*ty
 	return res, nil
 }
 
-func (c *AdminProduct) GetProduct(req *types.GetProductRequest) (*types.GetProductReply, error) {
-	res := &types.GetProductReply{}
+func (c *AdminProduct) GetProduct(req *powerxtypes.GetProductRequest) (*powerxtypes.GetProductReply, error) {
+	res := &powerxtypes.GetProductReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/product/products/%v", req.ProductId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminProduct) GetProduct(req *types.GetProductRequest) (*types.GetProdu
 	return res, nil
 }
 
-func (c *AdminProduct) CreateProduct(req *types.CreateProductRequest) (*types.CreateProductReply, error) {
-	res := &types.CreateProductReply{}
+func (c *AdminProduct) CreateProduct(req *powerxtypes.CreateProductRequest) (*powerxtypes.CreateProductReply, error) {
+	res := &powerxtypes.CreateProductReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/product/products").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminProduct) CreateProduct(req *types.CreateProductRequest) (*types.Cr
 	return res, nil
 }
 
-func (c *AdminProduct) PutProduct(req *types.PutProductRequest) (*types.PutProductReply, error) {
-	res := &types.PutProductReply{}
+func (c *AdminProduct) PutProduct(req *powerxtypes.PutProductRequest) (*powerxtypes.PutProductReply, error) {
+	res := &powerxtypes.PutProductReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/product/products/%v", req.ProductId)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminProduct) PutProduct(req *types.PutProductRequest) (*types.PutProdu
 	return res, nil
 }
 
-func (c *AdminProduct) PatchProduct(req *types.PatchProductRequest) (*types.PatchProductReply, error) {
-	res := &types.PatchProductReply{}
+func (c *AdminProduct) PatchProduct(req *powerxtypes.PatchProductRequest) (*powerxtypes.PatchProductReply, error) {
+	res := &powerxtypes.PatchProductReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/product/products/%v", req.ProductId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminProduct) PatchProduct(req *types.PatchProductRequest) (*types.Patc
 	return res, nil
 }
 
-func (c *AdminProduct) DeleteProduct(req *types.DeleteProductRequest) (*types.DeleteProductReply, error) {
-	res := &types.DeleteProductReply{}
+func (c *AdminProduct) DeleteProduct(req *powerxtypes.DeleteProductRequest) (*powerxtypes.DeleteProductReply, error) {
+	res := &powerxtypes.DeleteProductReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/product/products/%v", req.ProductId)).
 		Json(req).
@@ -82,8 +82,8 @@ func (c *AdminProduct) DeleteProduct(req *types.DeleteProductRequest) (*types.De
 	return res, nil
 }
 
-func (c *AdminProduct) AssignProductToProductCategory(req *types.AssignProductToProductCategoryRequest) (*types.AssignProductToProductCategoryReply, error) {
-	res := &types.AssignProductToProductCategoryReply{}
+func (c *AdminProduct) AssignProductToProductCategory(req *powerxtypes.AssignProductToProductCategoryRequest) (*powerxtypes.AssignProductToProductCategoryReply, error) {
+	res := &powerxtypes.AssignProductToProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/product/products/:id/actions/assign-to-product-categroy").
 		Json(req).

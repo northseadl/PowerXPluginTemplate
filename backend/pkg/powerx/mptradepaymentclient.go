@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type MpTradePayment struct {
 	*PowerX
 }
 
-func (c *MpTradePayment) ListPaymentsPage(req *types.ListPaymentsPageRequest) (*types.ListPaymentsPageReply, error) {
-	res := &types.ListPaymentsPageReply{}
+func (c *MpTradePayment) ListPaymentsPage(req *powerxtypes.ListPaymentsPageRequest) (*powerxtypes.ListPaymentsPageReply, error) {
+	res := &powerxtypes.ListPaymentsPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/mp/trade/payments/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *MpTradePayment) ListPaymentsPage(req *types.ListPaymentsPageRequest) (*
 	return res, nil
 }
 
-func (c *MpTradePayment) GetPayment(req *types.GetPaymentRequest) (*types.GetPaymentReply, error) {
-	res := &types.GetPaymentReply{}
+func (c *MpTradePayment) GetPayment(req *powerxtypes.GetPaymentRequest) (*powerxtypes.GetPaymentReply, error) {
+	res := &powerxtypes.GetPaymentReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/mp/trade/payments/%v", req.PaymentId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *MpTradePayment) GetPayment(req *types.GetPaymentRequest) (*types.GetPay
 	return res, nil
 }
 
-func (c *MpTradePayment) CreatePaymentFromOrder(req *types.CreatePaymentFromOrderRequest) (*types.CreatePaymentFromOrderRequestReply, error) {
-	res := &types.CreatePaymentFromOrderRequestReply{}
+func (c *MpTradePayment) CreatePaymentFromOrder(req *powerxtypes.CreatePaymentFromOrderRequest) (*powerxtypes.CreatePaymentFromOrderRequestReply, error) {
+	res := &powerxtypes.CreatePaymentFromOrderRequestReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/mp/trade/payments").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *MpTradePayment) CreatePaymentFromOrder(req *types.CreatePaymentFromOrde
 	return res, nil
 }
 
-func (c *MpTradePayment) UpdatePayment(req *types.UpdatePaymentRequest) (*types.UpdatePaymentReply, error) {
-	res := &types.UpdatePaymentReply{}
+func (c *MpTradePayment) UpdatePayment(req *powerxtypes.UpdatePaymentRequest) (*powerxtypes.UpdatePaymentReply, error) {
+	res := &powerxtypes.UpdatePaymentReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/mp/trade/payments/%v", req.PaymentId)).
 		Json(req).

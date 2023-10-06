@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminProductSku struct {
 	*PowerX
 }
 
-func (c *AdminProductSku) ListSKUPage(req *types.ListSKUPageRequest) (*types.ListSKUPageReply, error) {
-	res := &types.ListSKUPageReply{}
+func (c *AdminProductSku) ListSKUPage(req *powerxtypes.ListSKUPageRequest) (*powerxtypes.ListSKUPageReply, error) {
+	res := &powerxtypes.ListSKUPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/product/skus/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminProductSku) ListSKUPage(req *types.ListSKUPageRequest) (*types.Lis
 	return res, nil
 }
 
-func (c *AdminProductSku) GetSKU(req *types.GetSKURequest) (*types.GetSKUReply, error) {
-	res := &types.GetSKUReply{}
+func (c *AdminProductSku) GetSKU(req *powerxtypes.GetSKURequest) (*powerxtypes.GetSKUReply, error) {
+	res := &powerxtypes.GetSKUReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%v", req.SKUId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminProductSku) GetSKU(req *types.GetSKURequest) (*types.GetSKUReply, 
 	return res, nil
 }
 
-func (c *AdminProductSku) CreateSKU(req *types.CreateSKURequest) (*types.CreateSKUReply, error) {
-	res := &types.CreateSKUReply{}
+func (c *AdminProductSku) CreateSKU(req *powerxtypes.CreateSKURequest) (*powerxtypes.CreateSKUReply, error) {
+	res := &powerxtypes.CreateSKUReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/product/skus").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminProductSku) CreateSKU(req *types.CreateSKURequest) (*types.CreateS
 	return res, nil
 }
 
-func (c *AdminProductSku) ConfigSKU(req *types.ConfigSKURequest) (*types.ConfigSKUReply, error) {
-	res := &types.ConfigSKUReply{}
+func (c *AdminProductSku) ConfigSKU(req *powerxtypes.ConfigSKURequest) (*powerxtypes.ConfigSKUReply, error) {
+	res := &powerxtypes.ConfigSKUReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/product/skus/config").
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminProductSku) ConfigSKU(req *types.ConfigSKURequest) (*types.ConfigS
 	return res, nil
 }
 
-func (c *AdminProductSku) PutSKU(req *types.PutSKURequest) (*types.PutSKUReply, error) {
-	res := &types.PutSKUReply{}
+func (c *AdminProductSku) PutSKU(req *powerxtypes.PutSKURequest) (*powerxtypes.PutSKUReply, error) {
+	res := &powerxtypes.PutSKUReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%v", req.SKUId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminProductSku) PutSKU(req *types.PutSKURequest) (*types.PutSKUReply, 
 	return res, nil
 }
 
-func (c *AdminProductSku) PatchSKU(req *types.PatchSKURequest) (*types.PatchSKUReply, error) {
-	res := &types.PatchSKUReply{}
+func (c *AdminProductSku) PatchSKU(req *powerxtypes.PatchSKURequest) (*powerxtypes.PatchSKUReply, error) {
+	res := &powerxtypes.PatchSKUReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%v", req.SKUId)).
 		Json(req).
@@ -82,8 +82,8 @@ func (c *AdminProductSku) PatchSKU(req *types.PatchSKURequest) (*types.PatchSKUR
 	return res, nil
 }
 
-func (c *AdminProductSku) DeleteSKU(req *types.DeleteSKURequest) (*types.DeleteSKUReply, error) {
-	res := &types.DeleteSKUReply{}
+func (c *AdminProductSku) DeleteSKU(req *powerxtypes.DeleteSKURequest) (*powerxtypes.DeleteSKUReply, error) {
+	res := &powerxtypes.DeleteSKUReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/product/skus/%v", req.SKUId)).
 		Json(req).

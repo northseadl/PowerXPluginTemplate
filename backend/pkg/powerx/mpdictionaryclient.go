@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type MpDictionary struct {
 	*PowerX
 }
 
-func (c *MpDictionary) ListDictionaryPageTypes(req *types.ListDictionaryTypesPageRequest) (*types.ListDictionaryTypesPageReply, error) {
-	res := &types.ListDictionaryTypesPageReply{}
+func (c *MpDictionary) ListDictionaryPageTypes(req *powerxtypes.ListDictionaryTypesPageRequest) (*powerxtypes.ListDictionaryTypesPageReply, error) {
+	res := &powerxtypes.ListDictionaryTypesPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/web/dictionary/types/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *MpDictionary) ListDictionaryPageTypes(req *types.ListDictionaryTypesPag
 	return res, nil
 }
 
-func (c *MpDictionary) GetDictionaryType(req *types.GetDictionaryTypeRequest) (*types.GetDictionaryTypeReply, error) {
-	res := &types.GetDictionaryTypeReply{}
+func (c *MpDictionary) GetDictionaryType(req *powerxtypes.GetDictionaryTypeRequest) (*powerxtypes.GetDictionaryTypeReply, error) {
+	res := &powerxtypes.GetDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/web/dictionary/types/%v", req.DictionaryType)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *MpDictionary) GetDictionaryType(req *types.GetDictionaryTypeRequest) (*
 	return res, nil
 }
 
-func (c *MpDictionary) ListDictionaryItems(req *types.ListDictionaryItemsRequest) (*types.ListDictionaryItemsReply, error) {
-	res := &types.ListDictionaryItemsReply{}
+func (c *MpDictionary) ListDictionaryItems(req *powerxtypes.ListDictionaryItemsRequest) (*powerxtypes.ListDictionaryItemsReply, error) {
+	res := &powerxtypes.ListDictionaryItemsReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/web/dictionary/items").
 		BindQuery(req).
@@ -46,8 +46,8 @@ func (c *MpDictionary) ListDictionaryItems(req *types.ListDictionaryItemsRequest
 	return res, nil
 }
 
-func (c *MpDictionary) GetDictionaryItem(req *types.GetDictionaryItemRequest) (*types.GetDictionaryItemReply, error) {
-	res := &types.GetDictionaryItemReply{}
+func (c *MpDictionary) GetDictionaryItem(req *powerxtypes.GetDictionaryItemRequest) (*powerxtypes.GetDictionaryItemReply, error) {
+	res := &powerxtypes.GetDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/web/dictionary/items/%v/%v", req.DictionaryType, req.DictionaryItem)).
 		BindQuery(req).

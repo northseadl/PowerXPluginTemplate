@@ -1,4 +1,4 @@
-package types
+package powerxtypes
 
 type GetHomeReply struct {
 	Greet       string `json:"greet,optional"`

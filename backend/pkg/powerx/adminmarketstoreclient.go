@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminMarketStore struct {
 	*PowerX
 }
 
-func (c *AdminMarketStore) ListStoresPage(req *types.ListStoresPageRequest) (*types.ListStoresPageReply, error) {
-	res := &types.ListStoresPageReply{}
+func (c *AdminMarketStore) ListStoresPage(req *powerxtypes.ListStoresPageRequest) (*powerxtypes.ListStoresPageReply, error) {
+	res := &powerxtypes.ListStoresPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/market/stores/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminMarketStore) ListStoresPage(req *types.ListStoresPageRequest) (*ty
 	return res, nil
 }
 
-func (c *AdminMarketStore) GetStore(req *types.GetStoreRequest) (*types.GetStoreReply, error) {
-	res := &types.GetStoreReply{}
+func (c *AdminMarketStore) GetStore(req *powerxtypes.GetStoreRequest) (*powerxtypes.GetStoreReply, error) {
+	res := &powerxtypes.GetStoreReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%v", req.StoreId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminMarketStore) GetStore(req *types.GetStoreRequest) (*types.GetStore
 	return res, nil
 }
 
-func (c *AdminMarketStore) CreateStore(req *types.CreateStoreRequest) (*types.CreateStoreReply, error) {
-	res := &types.CreateStoreReply{}
+func (c *AdminMarketStore) CreateStore(req *powerxtypes.CreateStoreRequest) (*powerxtypes.CreateStoreReply, error) {
+	res := &powerxtypes.CreateStoreReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/market/stores").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminMarketStore) CreateStore(req *types.CreateStoreRequest) (*types.Cr
 	return res, nil
 }
 
-func (c *AdminMarketStore) PutStore(req *types.PutStoreRequest) (*types.PutStoreReply, error) {
-	res := &types.PutStoreReply{}
+func (c *AdminMarketStore) PutStore(req *powerxtypes.PutStoreRequest) (*powerxtypes.PutStoreReply, error) {
+	res := &powerxtypes.PutStoreReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%v", req.StoreId)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminMarketStore) PutStore(req *types.PutStoreRequest) (*types.PutStore
 	return res, nil
 }
 
-func (c *AdminMarketStore) DeleteStore(req *types.DeleteStoreRequest) (*types.DeleteStoreReply, error) {
-	res := &types.DeleteStoreReply{}
+func (c *AdminMarketStore) DeleteStore(req *powerxtypes.DeleteStoreRequest) (*powerxtypes.DeleteStoreReply, error) {
+	res := &powerxtypes.DeleteStoreReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%v", req.StoreId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminMarketStore) DeleteStore(req *types.DeleteStoreRequest) (*types.De
 	return res, nil
 }
 
-func (c *AdminMarketStore) AssignStoreToStoreManager(req *types.AssignStoreManagerRequest) (*types.AssignStoreManagerReply, error) {
-	res := &types.AssignStoreManagerReply{}
+func (c *AdminMarketStore) AssignStoreToStoreManager(req *powerxtypes.AssignStoreManagerRequest) (*powerxtypes.AssignStoreManagerReply, error) {
+	res := &powerxtypes.AssignStoreManagerReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri(fmt.Sprintf("/api/v1/admin/market/stores/%v/actions/assign-to-store-categroy", req.Id)).
 		Json(req).

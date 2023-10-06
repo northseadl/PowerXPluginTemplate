@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminProductCategory struct {
 	*PowerX
 }
 
-func (c *AdminProductCategory) ListProductCategoryTree(req *types.ListProductCategoryTreeRequest) (*types.ListProductCategoryTreeReply, error) {
-	res := &types.ListProductCategoryTreeReply{}
+func (c *AdminProductCategory) ListProductCategoryTree(req *powerxtypes.ListProductCategoryTreeRequest) (*powerxtypes.ListProductCategoryTreeReply, error) {
+	res := &powerxtypes.ListProductCategoryTreeReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/product/product-category-tree").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminProductCategory) ListProductCategoryTree(req *types.ListProductCat
 	return res, nil
 }
 
-func (c *AdminProductCategory) GetProductCategory(req *types.GetProductCategoryRequest) (*types.GetProductCategoryReply, error) {
-	res := &types.GetProductCategoryReply{}
+func (c *AdminProductCategory) GetProductCategory(req *powerxtypes.GetProductCategoryRequest) (*powerxtypes.GetProductCategoryReply, error) {
+	res := &powerxtypes.GetProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%v", req.ProductCategoryId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminProductCategory) GetProductCategory(req *types.GetProductCategoryR
 	return res, nil
 }
 
-func (c *AdminProductCategory) CreateProductCategory(req *types.CreateProductCategoryRequest) (*types.CreateProductCategoryReply, error) {
-	res := &types.CreateProductCategoryReply{}
+func (c *AdminProductCategory) CreateProductCategory(req *powerxtypes.CreateProductCategoryRequest) (*powerxtypes.CreateProductCategoryReply, error) {
+	res := &powerxtypes.CreateProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/product/product-categories").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminProductCategory) CreateProductCategory(req *types.CreateProductCat
 	return res, nil
 }
 
-func (c *AdminProductCategory) UpdateProductCategory(req *types.UpdateProductCategoryRequest) (*types.UpdateProductCategoryReply, error) {
-	res := &types.UpdateProductCategoryReply{}
+func (c *AdminProductCategory) UpdateProductCategory(req *powerxtypes.UpdateProductCategoryRequest) (*powerxtypes.UpdateProductCategoryReply, error) {
+	res := &powerxtypes.UpdateProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%v", req.Id)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminProductCategory) UpdateProductCategory(req *types.UpdateProductCat
 	return res, nil
 }
 
-func (c *AdminProductCategory) PatchProductCategory(req *types.PatchProductCategoryRequest) (*types.PatchProductCategoryReply, error) {
-	res := &types.PatchProductCategoryReply{}
+func (c *AdminProductCategory) PatchProductCategory(req *powerxtypes.PatchProductCategoryRequest) (*powerxtypes.PatchProductCategoryReply, error) {
+	res := &powerxtypes.PatchProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%v", req.Id)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminProductCategory) PatchProductCategory(req *types.PatchProductCateg
 	return res, nil
 }
 
-func (c *AdminProductCategory) DeleteProductCategory(req *types.DeleteProductCategoryRequest) (*types.DeleteProductCategoryReply, error) {
-	res := &types.DeleteProductCategoryReply{}
+func (c *AdminProductCategory) DeleteProductCategory(req *powerxtypes.DeleteProductCategoryRequest) (*powerxtypes.DeleteProductCategoryReply, error) {
+	res := &powerxtypes.DeleteProductCategoryReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/product/product-categories/%v", req.Id)).
 		Json(req).

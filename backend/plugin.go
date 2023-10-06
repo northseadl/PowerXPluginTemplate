@@ -5,43 +5,40 @@ import (
 	"PluginTemplate/internal/handler"
 	"PluginTemplate/internal/svc"
 	"PluginTemplate/pkg/plugin"
-	"PluginTemplate/pkg/powerx/client"
 	"flag"
 	"fmt"
 	"github.com/zeromicro/go-zero/rest"
 	"log/slog"
 )
 
-// 当前插件的插件名
-var name = flag.String("n", "plugin", "the name")
-
-// 主程序的地址
-var host = flag.String("h", "localhost:8888", "the host")
+var (
+	name       = flag.String("n", "plugin", "the name")
+	host       = flag.String("h", "localhost:8888", "the host")
+	mode       = flag.String("m", "dev", "the mode")
+	configPath = flag.String("c", "etc/etc.yaml", "the config file")
+)
 
 func main() {
 	flag.Parse()
-	// 从主程序加载配置，如果时开发环境可以从etc加载
 
-	// 对于插件，这些选项由程序定义
-	restConf, err := plugin.DefaultRestConfWithRandomPort(*name)
+	restConf := plugin.CreateRestConf(*mode, *name)
 	server := rest.MustNewServer(restConf)
 	defer server.Stop()
 
-	var c config.Config
-	c.RestConf = restConf
-
-	// 创建主程序请求客户端
-	client := client.NewPClient(fmt.Sprintf("http://%s", *host))
-
-	ctx := svc.NewServiceContext(c, client)
+	c := config.Config{RestConf: restConf}
+	c.Endpoint = fmt.Sprintf("http://%s", *host)
+	ctx := svc.NewServiceContext(c)
 	handler.RegisterHandlers(server, ctx)
 
-	// 解析插件信息并注册到主程序
 	restPlugin := plugin.ParsePlugin(server, c.RestConf)
-	err = plugin.RegisterPluginToHost(*host, restPlugin)
-	if err != nil {
-		slog.Error(fmt.Sprintf("Register plugin %s to host %s failed: %s", *name, *host, err.Error()))
+
+	if *mode == "dev" {
+		plugin.LoadConfigFromEtcYaml(*configPath, &c.PowerXPlugin)
+	} else {
+		plugin.RegisterPlugin(*host, &c.PowerXPlugin, restPlugin)
 	}
+
+	ctx.Setup()
 
 	slog.Info(fmt.Sprintf("Plugin %s start at %s", *name, restPlugin.Data()["addr"]))
 	server.Start()

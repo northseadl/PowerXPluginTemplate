@@ -1,8 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
-
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"net/http"
 )
 
@@ -10,8 +9,8 @@ type AdminScrmContact struct {
 	*PowerX
 }
 
-func (c *AdminScrmContact) SyncWeWorkContact() (*types.SyncWeWorkContactReply, error) {
-	res := &types.SyncWeWorkContactReply{}
+func (c *AdminScrmContact) SyncWeWorkContact() (*powerxtypes.SyncWeWorkContactReply, error) {
+	res := &powerxtypes.SyncWeWorkContactReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/scrm/contact/contacts/actions/sync").
 		Result(res)
@@ -21,8 +20,8 @@ func (c *AdminScrmContact) SyncWeWorkContact() (*types.SyncWeWorkContactReply, e
 	return res, nil
 }
 
-func (c *AdminScrmContact) ListWeWorkEmployee(req *types.ListWeWorkEmployeeReqeust) (*types.ListWeWorkEmployeeReply, error) {
-	res := &types.ListWeWorkEmployeeReply{}
+func (c *AdminScrmContact) ListWeWorkEmployee(req *powerxtypes.ListWeWorkEmployeeReqeust) (*powerxtypes.ListWeWorkEmployeeReply, error) {
+	res := &powerxtypes.ListWeWorkEmployeeReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/scrm/contact/employees").
 		BindQuery(req).

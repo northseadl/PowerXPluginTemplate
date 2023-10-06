@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminDictionary struct {
 	*PowerX
 }
 
-func (c *AdminDictionary) ListDictionaryPageTypes(req *types.ListDictionaryTypesPageRequest) (*types.ListDictionaryTypesPageReply, error) {
-	res := &types.ListDictionaryTypesPageReply{}
+func (c *AdminDictionary) ListDictionaryPageTypes(req *powerxtypes.ListDictionaryTypesPageRequest) (*powerxtypes.ListDictionaryTypesPageReply, error) {
+	res := &powerxtypes.ListDictionaryTypesPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/dictionary/types/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminDictionary) ListDictionaryPageTypes(req *types.ListDictionaryTypes
 	return res, nil
 }
 
-func (c *AdminDictionary) ListDictionaryTypes(req *types.ListDictionaryTypesPageRequest) (*types.ListDictionaryTypesPageReply, error) {
-	res := &types.ListDictionaryTypesPageReply{}
+func (c *AdminDictionary) ListDictionaryTypes(req *powerxtypes.ListDictionaryTypesPageRequest) (*powerxtypes.ListDictionaryTypesPageReply, error) {
+	res := &powerxtypes.ListDictionaryTypesPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/dictionary/types").
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminDictionary) ListDictionaryTypes(req *types.ListDictionaryTypesPage
 	return res, nil
 }
 
-func (c *AdminDictionary) GetDictionaryType(req *types.GetDictionaryTypeRequest) (*types.GetDictionaryTypeReply, error) {
-	res := &types.GetDictionaryTypeReply{}
+func (c *AdminDictionary) GetDictionaryType(req *powerxtypes.GetDictionaryTypeRequest) (*powerxtypes.GetDictionaryTypeReply, error) {
+	res := &powerxtypes.GetDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%v", req.DictionaryType)).
 		BindQuery(req).
@@ -46,8 +46,8 @@ func (c *AdminDictionary) GetDictionaryType(req *types.GetDictionaryTypeRequest)
 	return res, nil
 }
 
-func (c *AdminDictionary) CreateDictionaryType(req *types.CreateDictionaryTypeRequest) (*types.CreateDictionaryTypeReply, error) {
-	res := &types.CreateDictionaryTypeReply{}
+func (c *AdminDictionary) CreateDictionaryType(req *powerxtypes.CreateDictionaryTypeRequest) (*powerxtypes.CreateDictionaryTypeReply, error) {
+	res := &powerxtypes.CreateDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/dictionary/types").
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminDictionary) CreateDictionaryType(req *types.CreateDictionaryTypeRe
 	return res, nil
 }
 
-func (c *AdminDictionary) UpdateDictionaryType(req *types.UpdateDictionaryTypeRequest) (*types.UpdateDictionaryTypeReply, error) {
-	res := &types.UpdateDictionaryTypeReply{}
+func (c *AdminDictionary) UpdateDictionaryType(req *powerxtypes.UpdateDictionaryTypeRequest) (*powerxtypes.UpdateDictionaryTypeReply, error) {
+	res := &powerxtypes.UpdateDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%v", req.Type)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminDictionary) UpdateDictionaryType(req *types.UpdateDictionaryTypeRe
 	return res, nil
 }
 
-func (c *AdminDictionary) DeleteDictionaryType(req *types.DeleteDictionaryTypeRequest) (*types.DeleteDictionaryTypeReply, error) {
-	res := &types.DeleteDictionaryTypeReply{}
+func (c *AdminDictionary) DeleteDictionaryType(req *powerxtypes.DeleteDictionaryTypeRequest) (*powerxtypes.DeleteDictionaryTypeReply, error) {
+	res := &powerxtypes.DeleteDictionaryTypeReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/dictionary/types/%v", req.Type)).
 		Json(req).
@@ -82,8 +82,8 @@ func (c *AdminDictionary) DeleteDictionaryType(req *types.DeleteDictionaryTypeRe
 	return res, nil
 }
 
-func (c *AdminDictionary) ListDictionaryItems(req *types.ListDictionaryItemsRequest) (*types.ListDictionaryItemsReply, error) {
-	res := &types.ListDictionaryItemsReply{}
+func (c *AdminDictionary) ListDictionaryItems(req *powerxtypes.ListDictionaryItemsRequest) (*powerxtypes.ListDictionaryItemsReply, error) {
+	res := &powerxtypes.ListDictionaryItemsReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/dictionary/items").
 		BindQuery(req).
@@ -94,8 +94,8 @@ func (c *AdminDictionary) ListDictionaryItems(req *types.ListDictionaryItemsRequ
 	return res, nil
 }
 
-func (c *AdminDictionary) GetDictionaryItem(req *types.GetDictionaryItemRequest) (*types.GetDictionaryItemReply, error) {
-	res := &types.GetDictionaryItemReply{}
+func (c *AdminDictionary) GetDictionaryItem(req *powerxtypes.GetDictionaryItemRequest) (*powerxtypes.GetDictionaryItemReply, error) {
+	res := &powerxtypes.GetDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%v/%v", req.DictionaryType, req.DictionaryItem)).
 		BindQuery(req).
@@ -106,8 +106,8 @@ func (c *AdminDictionary) GetDictionaryItem(req *types.GetDictionaryItemRequest)
 	return res, nil
 }
 
-func (c *AdminDictionary) CreateDictionaryItem(req *types.CreateDictionaryItemRequest) (*types.CreateDictionaryItemReply, error) {
-	res := &types.CreateDictionaryItemReply{}
+func (c *AdminDictionary) CreateDictionaryItem(req *powerxtypes.CreateDictionaryItemRequest) (*powerxtypes.CreateDictionaryItemReply, error) {
+	res := &powerxtypes.CreateDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/dictionary/items").
 		Json(req).
@@ -118,8 +118,8 @@ func (c *AdminDictionary) CreateDictionaryItem(req *types.CreateDictionaryItemRe
 	return res, nil
 }
 
-func (c *AdminDictionary) UpdateDictionaryItem(req *types.UpdateDictionaryItemRequest) (*types.UpdateDictionaryItemReply, error) {
-	res := &types.UpdateDictionaryItemReply{}
+func (c *AdminDictionary) UpdateDictionaryItem(req *powerxtypes.UpdateDictionaryItemRequest) (*powerxtypes.UpdateDictionaryItemReply, error) {
+	res := &powerxtypes.UpdateDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%v/%v", req.Key, req.Type)).
 		Json(req).
@@ -130,8 +130,8 @@ func (c *AdminDictionary) UpdateDictionaryItem(req *types.UpdateDictionaryItemRe
 	return res, nil
 }
 
-func (c *AdminDictionary) DeleteDictionaryItem(req *types.DeleteDictionaryItemRequest) (*types.DeleteDictionaryItemReply, error) {
-	res := &types.DeleteDictionaryItemReply{}
+func (c *AdminDictionary) DeleteDictionaryItem(req *powerxtypes.DeleteDictionaryItemRequest) (*powerxtypes.DeleteDictionaryItemReply, error) {
+	res := &powerxtypes.DeleteDictionaryItemReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/dictionary/items/%v/%v", req.Key, req.Type)).
 		Json(req).

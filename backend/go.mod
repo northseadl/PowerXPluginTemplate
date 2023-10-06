@@ -5,6 +5,7 @@ go 1.21
 require (
 	github.com/artisancloud/httphelper v0.1.8
 	github.com/zeromicro/go-zero v1.5.3
+	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (

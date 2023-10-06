@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminDepartment struct {
 	*PowerX
 }
 
-func (c *AdminDepartment) GetDepartmentTree(req *types.GetDepartmentTreeRequest) (*types.GetDepartmentTreeReply, error) {
-	res := &types.GetDepartmentTreeReply{}
+func (c *AdminDepartment) GetDepartmentTree(req *powerxtypes.GetDepartmentTreeRequest) (*powerxtypes.GetDepartmentTreeReply, error) {
+	res := &powerxtypes.GetDepartmentTreeReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/department/department-tree/%v", req.DepId)).
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminDepartment) GetDepartmentTree(req *types.GetDepartmentTreeRequest)
 	return res, nil
 }
 
-func (c *AdminDepartment) GetDepartment(req *types.GetDepartmentRequest) (*types.GetDepartmentReply, error) {
-	res := &types.GetDepartmentReply{}
+func (c *AdminDepartment) GetDepartment(req *powerxtypes.GetDepartmentRequest) (*powerxtypes.GetDepartmentReply, error) {
+	res := &powerxtypes.GetDepartmentReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%v", req.Id)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminDepartment) GetDepartment(req *types.GetDepartmentRequest) (*types
 	return res, nil
 }
 
-func (c *AdminDepartment) CreateDepartment(req *types.CreateDepartmentRequest) (*types.CreateDepartmentReply, error) {
-	res := &types.CreateDepartmentReply{}
+func (c *AdminDepartment) CreateDepartment(req *powerxtypes.CreateDepartmentRequest) (*powerxtypes.CreateDepartmentReply, error) {
+	res := &powerxtypes.CreateDepartmentReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/department/departments").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminDepartment) CreateDepartment(req *types.CreateDepartmentRequest) (
 	return res, nil
 }
 
-func (c *AdminDepartment) PatchDepartment(req *types.PatchDepartmentRequest) (*types.PatchDepartmentReply, error) {
-	res := &types.PatchDepartmentReply{}
+func (c *AdminDepartment) PatchDepartment(req *powerxtypes.PatchDepartmentRequest) (*powerxtypes.PatchDepartmentReply, error) {
+	res := &powerxtypes.PatchDepartmentReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%v", req.Id)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminDepartment) PatchDepartment(req *types.PatchDepartmentRequest) (*t
 	return res, nil
 }
 
-func (c *AdminDepartment) DeleteDepartment(req *types.DeleteDepartmentRequest) (*types.DeleteDepartmentReply, error) {
-	res := &types.DeleteDepartmentReply{}
+func (c *AdminDepartment) DeleteDepartment(req *powerxtypes.DeleteDepartmentRequest) (*powerxtypes.DeleteDepartmentReply, error) {
+	res := &powerxtypes.DeleteDepartmentReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/department/departments/%v", req.Id)).
 		Json(req).

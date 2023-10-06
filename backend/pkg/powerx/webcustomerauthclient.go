@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type WebCustomerAuth struct {
 	*PowerX
 }
 
-func (c *WebCustomerAuth) Login(req *types.CustomerLoginRequest) (*types.CustomerLoginAuthReply, error) {
-	res := &types.CustomerLoginAuthReply{}
+func (c *WebCustomerAuth) Login(req *powerxtypes.CustomerLoginRequest) (*powerxtypes.CustomerLoginAuthReply, error) {
+	res := &powerxtypes.CustomerLoginAuthReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/web/customer/login").
 		Json(req).
@@ -22,8 +22,8 @@ func (c *WebCustomerAuth) Login(req *types.CustomerLoginRequest) (*types.Custome
 	return res, nil
 }
 
-func (c *WebCustomerAuth) RegisterCustomerByPhone(req *types.CustomerRegisterByPhoneRequest) (*types.CustomerRegisterByPhoneReply, error) {
-	res := &types.CustomerRegisterByPhoneReply{}
+func (c *WebCustomerAuth) RegisterCustomerByPhone(req *powerxtypes.CustomerRegisterByPhoneRequest) (*powerxtypes.CustomerRegisterByPhoneReply, error) {
+	res := &powerxtypes.CustomerRegisterByPhoneReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/web/customer/registerByPhone").
 		Json(req).
@@ -34,8 +34,8 @@ func (c *WebCustomerAuth) RegisterCustomerByPhone(req *types.CustomerRegisterByP
 	return res, nil
 }
 
-func (c *WebCustomerAuth) UpdateCustomerProfile(req *types.UpdateCustomerProfileRequest) (*types.UpdateCustomerProfileReply, error) {
-	res := &types.UpdateCustomerProfileReply{}
+func (c *WebCustomerAuth) UpdateCustomerProfile(req *powerxtypes.UpdateCustomerProfileRequest) (*powerxtypes.UpdateCustomerProfileReply, error) {
+	res := &powerxtypes.UpdateCustomerProfileReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri(fmt.Sprintf("/api/v1/web/customer/updateCustomerProfile/%v", req.CustomerId)).
 		Json(req).

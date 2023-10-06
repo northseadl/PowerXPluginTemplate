@@ -10,7 +10,6 @@ const PluginExample: AppRouteRecordRaw = {
     locale: '插件示例',
     icon: 'icon-settings',
     requiresAuth: true,
-    order: 3,
   },
   children: [
     {

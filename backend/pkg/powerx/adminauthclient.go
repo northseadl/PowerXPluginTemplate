@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminAuth struct {
 	*PowerX
 }
 
-func (c *AdminAuth) Login(req *types.LoginRequest) (*types.LoginReply, error) {
-	res := &types.LoginReply{}
+func (c *AdminAuth) Login(req *powerxtypes.LoginRequest) (*powerxtypes.LoginReply, error) {
+	res := &powerxtypes.LoginReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/auth/access/actions/basic-login").
 		Json(req).
@@ -22,8 +22,8 @@ func (c *AdminAuth) Login(req *types.LoginRequest) (*types.LoginReply, error) {
 	return res, nil
 }
 
-func (c *AdminAuth) Exchange(req *types.ExchangeRequest) (*types.ExchangeReply, error) {
-	res := &types.ExchangeReply{}
+func (c *AdminAuth) Exchange(req *powerxtypes.ExchangeRequest) (*powerxtypes.ExchangeReply, error) {
+	res := &powerxtypes.ExchangeReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri(fmt.Sprintf("/api/v1/admin/auth/access/actions/exchange-token", req.Type)).
 		Json(req).

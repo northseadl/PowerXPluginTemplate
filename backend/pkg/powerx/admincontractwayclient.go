@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminContractway struct {
 	*PowerX
 }
 
-func (c *AdminContractway) GetContractWayGroupTree(req *types.GetContractWayGroupTreeRequest) (*types.GetContractWayGroupTreeReply, error) {
-	res := &types.GetContractWayGroupTreeReply{}
+func (c *AdminContractway) GetContractWayGroupTree(req *powerxtypes.GetContractWayGroupTreeRequest) (*powerxtypes.GetContractWayGroupTreeReply, error) {
+	res := &powerxtypes.GetContractWayGroupTreeReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/contract-way/group-tree").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminContractway) GetContractWayGroupTree(req *types.GetContractWayGrou
 	return res, nil
 }
 
-func (c *AdminContractway) GetContractWayGroupList(req *types.GetContractWayGroupListRequest) (*types.GetContractWayGroupListReply, error) {
-	res := &types.GetContractWayGroupListReply{}
+func (c *AdminContractway) GetContractWayGroupList(req *powerxtypes.GetContractWayGroupListRequest) (*powerxtypes.GetContractWayGroupListReply, error) {
+	res := &powerxtypes.GetContractWayGroupListReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/contract-way/groups").
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminContractway) GetContractWayGroupList(req *types.GetContractWayGrou
 	return res, nil
 }
 
-func (c *AdminContractway) GetContractWays(req *types.GetContractWaysRequest) (*types.GetContractWaysReply, error) {
-	res := &types.GetContractWaysReply{}
+func (c *AdminContractway) GetContractWays(req *powerxtypes.GetContractWaysRequest) (*powerxtypes.GetContractWaysReply, error) {
+	res := &powerxtypes.GetContractWaysReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/contract-way").
 		BindQuery(req).
@@ -46,8 +46,8 @@ func (c *AdminContractway) GetContractWays(req *types.GetContractWaysRequest) (*
 	return res, nil
 }
 
-func (c *AdminContractway) CreateContractWay(req *types.CreateContractWayRequest) (*types.CreateContractWayReply, error) {
-	res := &types.CreateContractWayReply{}
+func (c *AdminContractway) CreateContractWay(req *powerxtypes.CreateContractWayRequest) (*powerxtypes.CreateContractWayReply, error) {
+	res := &powerxtypes.CreateContractWayReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/contract-way").
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminContractway) CreateContractWay(req *types.CreateContractWayRequest
 	return res, nil
 }
 
-func (c *AdminContractway) UpdateContractWay(req *types.UpdateContractWayRequest) (*types.UpdateContractWayReply, error) {
-	res := &types.UpdateContractWayReply{}
+func (c *AdminContractway) UpdateContractWay(req *powerxtypes.UpdateContractWayRequest) (*powerxtypes.UpdateContractWayReply, error) {
+	res := &powerxtypes.UpdateContractWayReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/contract-way/%v", req.Id)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminContractway) UpdateContractWay(req *types.UpdateContractWayRequest
 	return res, nil
 }
 
-func (c *AdminContractway) DeleteContractWay(req *types.DeleteContractWayRequest) (*types.DeleteContractWayReply, error) {
-	res := &types.DeleteContractWayReply{}
+func (c *AdminContractway) DeleteContractWay(req *powerxtypes.DeleteContractWayRequest) (*powerxtypes.DeleteContractWayReply, error) {
+	res := &powerxtypes.DeleteContractWayReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/contract-way/%v", req.Id)).
 		Json(req).

@@ -4,9 +4,11 @@ import "github.com/zeromicro/go-zero/rest"
 
 type Config struct {
 	rest.RestConf
-	Plugin PowerXPlugin
+	PowerXPlugin
+	Endpoint string
+	Mode     string
 }
 
 type PowerXPlugin struct {
-	Host string
+	AppKey string
 }

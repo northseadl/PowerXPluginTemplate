@@ -1,8 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
-
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"net/http"
 )
 
@@ -10,8 +9,8 @@ type MpProduct struct {
 	*PowerX
 }
 
-func (c *MpProduct) ListProductCategoryTree(req *types.ListProductCategoryTreeRequest) (*types.ListProductCategoryTreeReply, error) {
-	res := &types.ListProductCategoryTreeReply{}
+func (c *MpProduct) ListProductCategoryTree(req *powerxtypes.ListProductCategoryTreeRequest) (*powerxtypes.ListProductCategoryTreeReply, error) {
+	res := &powerxtypes.ListProductCategoryTreeReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/mp/product/product-category-tree").
 		BindQuery(req).
@@ -22,8 +21,8 @@ func (c *MpProduct) ListProductCategoryTree(req *types.ListProductCategoryTreeRe
 	return res, nil
 }
 
-func (c *MpProduct) ListProductCategories(req *types.ListProductCategoriesRequest) (*types.ListProductCategoriesReply, error) {
-	res := &types.ListProductCategoriesReply{}
+func (c *MpProduct) ListProductCategories(req *powerxtypes.ListProductCategoriesRequest) (*powerxtypes.ListProductCategoriesReply, error) {
+	res := &powerxtypes.ListProductCategoriesReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/mp/product/product-categories").
 		BindQuery(req).

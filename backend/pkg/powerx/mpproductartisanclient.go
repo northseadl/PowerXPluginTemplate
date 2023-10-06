@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type MpProductArtisan struct {
 	*PowerX
 }
 
-func (c *MpProductArtisan) ListArtisansPage(req *types.ListArtisansPageRequest) (*types.ListArtisansPageReply, error) {
-	res := &types.ListArtisansPageReply{}
+func (c *MpProductArtisan) ListArtisansPage(req *powerxtypes.ListArtisansPageRequest) (*powerxtypes.ListArtisansPageReply, error) {
+	res := &powerxtypes.ListArtisansPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/mp/product/artisans/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *MpProductArtisan) ListArtisansPage(req *types.ListArtisansPageRequest) 
 	return res, nil
 }
 
-func (c *MpProductArtisan) GetArtisan(req *types.GetArtisanRequest) (*types.GetArtisanReply, error) {
-	res := &types.GetArtisanReply{}
+func (c *MpProductArtisan) GetArtisan(req *powerxtypes.GetArtisanRequest) (*powerxtypes.GetArtisanReply, error) {
+	res := &powerxtypes.GetArtisanReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/mp/product/artisans/%v", req.ArtisanId)).
 		BindQuery(req).

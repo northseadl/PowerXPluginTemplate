@@ -13,7 +13,7 @@ type PClient struct {
 	H        httphelper.Helper
 }
 
-func NewPClient(endpoint string) *PClient {
+func NewPClient(endpoint string, debug bool) *PClient {
 	conf := &httphelper.Config{
 		Config: &client.Config{
 			Timeout: 30 * time.Second,
@@ -21,7 +21,11 @@ func NewPClient(endpoint string) *PClient {
 		BaseUrl: endpoint,
 	}
 
-	helper, _ := httphelper.NewRequestHelper(conf)
+	helper, err := httphelper.NewRequestHelper(conf)
+	if err != nil {
+		panic(err)
+	}
+	helper.WithMiddleware(httphelper.HttpDebugMiddleware(debug))
 	helper.WithMiddleware(func(handle dataflow.RequestHandle) dataflow.RequestHandle {
 		return func(request *http.Request, response *http.Response) error {
 			if token, ok := FromCtxAuthorization(request.Context()); ok {

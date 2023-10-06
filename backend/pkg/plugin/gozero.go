@@ -24,3 +24,8 @@ func DefaultRestConfWithRandomPort(name string) (rest.RestConf, error) {
 	}
 	return DefaultRestConf(name, port), nil
 }
+
+// DefaultRestConfForDev 返回一个默认的 gozero rest 配置，端口 8999
+func DefaultRestConfForDev(name string) rest.RestConf {
+	return DefaultRestConf(name, 8999)
+}

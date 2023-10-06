@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminProductProductspecific struct {
 	*PowerX
 }
 
-func (c *AdminProductProductspecific) ListProductSpecificPage(req *types.ListProductSpecificPageRequest) (*types.ListProductSpecificPageReply, error) {
-	res := &types.ListProductSpecificPageReply{}
+func (c *AdminProductProductspecific) ListProductSpecificPage(req *powerxtypes.ListProductSpecificPageRequest) (*powerxtypes.ListProductSpecificPageReply, error) {
+	res := &powerxtypes.ListProductSpecificPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/product/product-specifics/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminProductProductspecific) ListProductSpecificPage(req *types.ListPro
 	return res, nil
 }
 
-func (c *AdminProductProductspecific) GetProductSpecific(req *types.GetProductSpecificRequest) (*types.GetProductSpecificReply, error) {
-	res := &types.GetProductSpecificReply{}
+func (c *AdminProductProductspecific) GetProductSpecific(req *powerxtypes.GetProductSpecificRequest) (*powerxtypes.GetProductSpecificReply, error) {
+	res := &powerxtypes.GetProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%v", req.ProductSpecificId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminProductProductspecific) GetProductSpecific(req *types.GetProductSp
 	return res, nil
 }
 
-func (c *AdminProductProductspecific) CreateProductSpecific(req *types.CreateProductSpecificRequest) (*types.CreateProductSpecificReply, error) {
-	res := &types.CreateProductSpecificReply{}
+func (c *AdminProductProductspecific) CreateProductSpecific(req *powerxtypes.CreateProductSpecificRequest) (*powerxtypes.CreateProductSpecificReply, error) {
+	res := &powerxtypes.CreateProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/product/product-specifics").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminProductProductspecific) CreateProductSpecific(req *types.CreatePro
 	return res, nil
 }
 
-func (c *AdminProductProductspecific) ConfigProductSpecific(req *types.ConfigProductSpecificRequest) (*types.ConfigProductSpecificReply, error) {
-	res := &types.ConfigProductSpecificReply{}
+func (c *AdminProductProductspecific) ConfigProductSpecific(req *powerxtypes.ConfigProductSpecificRequest) (*powerxtypes.ConfigProductSpecificReply, error) {
+	res := &powerxtypes.ConfigProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/product/product-specifics/config").
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminProductProductspecific) ConfigProductSpecific(req *types.ConfigPro
 	return res, nil
 }
 
-func (c *AdminProductProductspecific) PutProductSpecific(req *types.PutProductSpecificRequest) (*types.PutProductSpecificReply, error) {
-	res := &types.PutProductSpecificReply{}
+func (c *AdminProductProductspecific) PutProductSpecific(req *powerxtypes.PutProductSpecificRequest) (*powerxtypes.PutProductSpecificReply, error) {
+	res := &powerxtypes.PutProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%v", req.ProductSpecificId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminProductProductspecific) PutProductSpecific(req *types.PutProductSp
 	return res, nil
 }
 
-func (c *AdminProductProductspecific) PatchProductSpecific(req *types.PatchProductSpecificRequest) (*types.PatchProductSpecificReply, error) {
-	res := &types.PatchProductSpecificReply{}
+func (c *AdminProductProductspecific) PatchProductSpecific(req *powerxtypes.PatchProductSpecificRequest) (*powerxtypes.PatchProductSpecificReply, error) {
+	res := &powerxtypes.PatchProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%v", req.ProductSpecificId)).
 		Json(req).
@@ -82,8 +82,8 @@ func (c *AdminProductProductspecific) PatchProductSpecific(req *types.PatchProdu
 	return res, nil
 }
 
-func (c *AdminProductProductspecific) DeleteProductSpecific(req *types.DeleteProductSpecificRequest) (*types.DeleteProductSpecificReply, error) {
-	res := &types.DeleteProductSpecificReply{}
+func (c *AdminProductProductspecific) DeleteProductSpecific(req *powerxtypes.DeleteProductSpecificRequest) (*powerxtypes.DeleteProductSpecificReply, error) {
+	res := &powerxtypes.DeleteProductSpecificReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/product/product-specifics/%v", req.ProductSpecificId)).
 		Json(req).

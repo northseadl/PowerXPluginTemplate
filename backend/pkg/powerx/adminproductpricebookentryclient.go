@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminProductPricebookentry struct {
 	*PowerX
 }
 
-func (c *AdminProductPricebookentry) ListPriceBookEntries(req *types.ListPriceBookEntriesPageRequest) (*types.ListPriceBookEntriesPageReply, error) {
-	res := &types.ListPriceBookEntriesPageReply{}
+func (c *AdminProductPricebookentry) ListPriceBookEntries(req *powerxtypes.ListPriceBookEntriesPageRequest) (*powerxtypes.ListPriceBookEntriesPageReply, error) {
+	res := &powerxtypes.ListPriceBookEntriesPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/product/price-book-entries/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminProductPricebookentry) ListPriceBookEntries(req *types.ListPriceBo
 	return res, nil
 }
 
-func (c *AdminProductPricebookentry) GetPriceBookEntry(req *types.GetPriceBookEntryRequest) (*types.GetPriceBookEntryReply, error) {
-	res := &types.GetPriceBookEntryReply{}
+func (c *AdminProductPricebookentry) GetPriceBookEntry(req *powerxtypes.GetPriceBookEntryRequest) (*powerxtypes.GetPriceBookEntryReply, error) {
+	res := &powerxtypes.GetPriceBookEntryReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/product/price-book-entries/%v", req.PriceBookEntry)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminProductPricebookentry) GetPriceBookEntry(req *types.GetPriceBookEn
 	return res, nil
 }
 
-func (c *AdminProductPricebookentry) ConfigPriceBookEntry(req *types.ConfigPriceBookEntryRequest) (*types.ConfigPriceBookEntryReply, error) {
-	res := &types.ConfigPriceBookEntryReply{}
+func (c *AdminProductPricebookentry) ConfigPriceBookEntry(req *powerxtypes.ConfigPriceBookEntryRequest) (*powerxtypes.ConfigPriceBookEntryReply, error) {
+	res := &powerxtypes.ConfigPriceBookEntryReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/product/price-book-entries/config").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminProductPricebookentry) ConfigPriceBookEntry(req *types.ConfigPrice
 	return res, nil
 }
 
-func (c *AdminProductPricebookentry) UpdatePriceBookEntry(req *types.UpdatePriceBookEntryRequest) (*types.UpdatePriceBookEntryReply, error) {
-	res := &types.UpdatePriceBookEntryReply{}
+func (c *AdminProductPricebookentry) UpdatePriceBookEntry(req *powerxtypes.UpdatePriceBookEntryRequest) (*powerxtypes.UpdatePriceBookEntryReply, error) {
+	res := &powerxtypes.UpdatePriceBookEntryReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri(fmt.Sprintf("/api/v1/admin/product/price-book-entries/%v", req.Id)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminProductPricebookentry) UpdatePriceBookEntry(req *types.UpdatePrice
 	return res, nil
 }
 
-func (c *AdminProductPricebookentry) DeletePriceBookEntry(req *types.DeletePriceBookEntryRequest) (*types.DeletePriceBookEntryReply, error) {
-	res := &types.DeletePriceBookEntryReply{}
+func (c *AdminProductPricebookentry) DeletePriceBookEntry(req *powerxtypes.DeletePriceBookEntryRequest) (*powerxtypes.DeletePriceBookEntryReply, error) {
+	res := &powerxtypes.DeletePriceBookEntryReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/product/price-book-entries/%v", req.Id)).
 		Json(req).

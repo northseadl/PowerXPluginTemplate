@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminBusinessOpportunity struct {
 	*PowerX
 }
 
-func (c *AdminBusinessOpportunity) GetOpportunityList(req *types.GetOpportunityListRequest) (*types.GetOpportunityListReply, error) {
-	res := &types.GetOpportunityListReply{}
+func (c *AdminBusinessOpportunity) GetOpportunityList(req *powerxtypes.GetOpportunityListRequest) (*powerxtypes.GetOpportunityListReply, error) {
+	res := &powerxtypes.GetOpportunityListReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/business/opportunities").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminBusinessOpportunity) GetOpportunityList(req *types.GetOpportunityL
 	return res, nil
 }
 
-func (c *AdminBusinessOpportunity) CreateOpportunity(req *types.CreateOpportunityRequest) (*types.CreateOpportunityReply, error) {
-	res := &types.CreateOpportunityReply{}
+func (c *AdminBusinessOpportunity) CreateOpportunity(req *powerxtypes.CreateOpportunityRequest) (*powerxtypes.CreateOpportunityReply, error) {
+	res := &powerxtypes.CreateOpportunityReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/business/opportunities").
 		Json(req).
@@ -34,8 +34,8 @@ func (c *AdminBusinessOpportunity) CreateOpportunity(req *types.CreateOpportunit
 	return res, nil
 }
 
-func (c *AdminBusinessOpportunity) AssignEmployeeToOpportunity(req *types.AssignEmployeeToOpportunityRequest) (*types.AssignEmployeeToOpportunityReply, error) {
-	res := &types.AssignEmployeeToOpportunityReply{}
+func (c *AdminBusinessOpportunity) AssignEmployeeToOpportunity(req *powerxtypes.AssignEmployeeToOpportunityRequest) (*powerxtypes.AssignEmployeeToOpportunityReply, error) {
+	res := &powerxtypes.AssignEmployeeToOpportunityReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/business/opportunities/%v/assign-employee", req.Id)).
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminBusinessOpportunity) AssignEmployeeToOpportunity(req *types.Assign
 	return res, nil
 }
 
-func (c *AdminBusinessOpportunity) UpdateOpportunity(req *types.UpdateOpportunityRequest) (*types.UpdateOpportunityReply, error) {
-	res := &types.UpdateOpportunityReply{}
+func (c *AdminBusinessOpportunity) UpdateOpportunity(req *powerxtypes.UpdateOpportunityRequest) (*powerxtypes.UpdateOpportunityReply, error) {
+	res := &powerxtypes.UpdateOpportunityReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/business/opportunities/%v", req.Id)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminBusinessOpportunity) UpdateOpportunity(req *types.UpdateOpportunit
 	return res, nil
 }
 
-func (c *AdminBusinessOpportunity) DeleteOpportunity(req *types.DeleteOpportunityRequest) (*types.DeleteOpportunityReply, error) {
-	res := &types.DeleteOpportunityReply{}
+func (c *AdminBusinessOpportunity) DeleteOpportunity(req *powerxtypes.DeleteOpportunityRequest) (*powerxtypes.DeleteOpportunityReply, error) {
+	res := &powerxtypes.DeleteOpportunityReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/business/opportunities/%v", req.Id)).
 		Json(req).

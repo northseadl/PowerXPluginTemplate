@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminMarketMedia struct {
 	*PowerX
 }
 
-func (c *AdminMarketMedia) ListMediasPage(req *types.ListMediasPageRequest) (*types.ListMediasPageReply, error) {
-	res := &types.ListMediasPageReply{}
+func (c *AdminMarketMedia) ListMediasPage(req *powerxtypes.ListMediasPageRequest) (*powerxtypes.ListMediasPageReply, error) {
+	res := &powerxtypes.ListMediasPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/market/medias/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminMarketMedia) ListMediasPage(req *types.ListMediasPageRequest) (*ty
 	return res, nil
 }
 
-func (c *AdminMarketMedia) CreateMedia(req *types.CreateMediaRequest) (*types.CreateMediaReply, error) {
-	res := &types.CreateMediaReply{}
+func (c *AdminMarketMedia) CreateMedia(req *powerxtypes.CreateMediaRequest) (*powerxtypes.CreateMediaReply, error) {
+	res := &powerxtypes.CreateMediaReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/market/medias").
 		Json(req).
@@ -34,8 +34,8 @@ func (c *AdminMarketMedia) CreateMedia(req *types.CreateMediaRequest) (*types.Cr
 	return res, nil
 }
 
-func (c *AdminMarketMedia) UpdateMedia(req *types.UpdateMediaRequest) (*types.UpdateMediaReply, error) {
-	res := &types.UpdateMediaReply{}
+func (c *AdminMarketMedia) UpdateMedia(req *powerxtypes.UpdateMediaRequest) (*powerxtypes.UpdateMediaReply, error) {
+	res := &powerxtypes.UpdateMediaReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%v", req.MediaId)).
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminMarketMedia) UpdateMedia(req *types.UpdateMediaRequest) (*types.Up
 	return res, nil
 }
 
-func (c *AdminMarketMedia) GetMedia(req *types.GetMediaRequest) (*types.GetMediaReply, error) {
-	res := &types.GetMediaReply{}
+func (c *AdminMarketMedia) GetMedia(req *powerxtypes.GetMediaRequest) (*powerxtypes.GetMediaReply, error) {
+	res := &powerxtypes.GetMediaReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%v", req.MediaId)).
 		BindQuery(req).
@@ -58,8 +58,8 @@ func (c *AdminMarketMedia) GetMedia(req *types.GetMediaRequest) (*types.GetMedia
 	return res, nil
 }
 
-func (c *AdminMarketMedia) DeleteMedia(req *types.DeleteMediaRequest) (*types.DeleteMediaReply, error) {
-	res := &types.DeleteMediaReply{}
+func (c *AdminMarketMedia) DeleteMedia(req *powerxtypes.DeleteMediaRequest) (*powerxtypes.DeleteMediaReply, error) {
+	res := &powerxtypes.DeleteMediaReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/market/medias/%v", req.MediaId)).
 		Json(req).

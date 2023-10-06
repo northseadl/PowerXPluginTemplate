@@ -13,26 +13,13 @@ info(
 )
 
 service PluginTemplate {
-	@handler Example
-	post /example (ExampleRequest) returns (ExampleReply)
-
 	@handler EmployeeInfo
-	get /employee/info (EmployeeInfoRequest) returns (EmployeeInfoReply)
+	get /employee/info/:id (EmployeeInfoRequest) returns (EmployeeInfoReply)
 }
 
 type (
-	ExampleRequest {
-		SendMessage string `json:"sendMessage"`
-	}
-
-	ExampleReply {
-		ReplyMessage string `json:"replyMessage"`
-	}
-)
-
-type (
 	EmployeeInfoRequest {
-		EmployeeId string `form:"employeeId"`
+		EmployeeId int64 `path:"id"`
 	}
 
 	EmployeeInfoReply {

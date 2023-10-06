@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminTradeAddressShipping struct {
 	*PowerX
 }
 
-func (c *AdminTradeAddressShipping) ListShippingAddressesPage(req *types.ListShippingAddressesPageRequest) (*types.ListShippingAddressesPageReply, error) {
-	res := &types.ListShippingAddressesPageReply{}
+func (c *AdminTradeAddressShipping) ListShippingAddressesPage(req *powerxtypes.ListShippingAddressesPageRequest) (*powerxtypes.ListShippingAddressesPageReply, error) {
+	res := &powerxtypes.ListShippingAddressesPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/trade/address/shipping/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminTradeAddressShipping) ListShippingAddressesPage(req *types.ListShi
 	return res, nil
 }
 
-func (c *AdminTradeAddressShipping) GetShippingAddress(req *types.GetShippingAddressRequest) (*types.GetShippingAddressReply, error) {
-	res := &types.GetShippingAddressReply{}
+func (c *AdminTradeAddressShipping) GetShippingAddress(req *powerxtypes.GetShippingAddressRequest) (*powerxtypes.GetShippingAddressReply, error) {
+	res := &powerxtypes.GetShippingAddressReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/address/shipping/%v", req.ShippingAddressId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminTradeAddressShipping) GetShippingAddress(req *types.GetShippingAdd
 	return res, nil
 }
 
-func (c *AdminTradeAddressShipping) CreateShippingAddress(req *types.CreateShippingAddressRequest) (*types.CreateShippingAddressReply, error) {
-	res := &types.CreateShippingAddressReply{}
+func (c *AdminTradeAddressShipping) CreateShippingAddress(req *powerxtypes.CreateShippingAddressRequest) (*powerxtypes.CreateShippingAddressReply, error) {
+	res := &powerxtypes.CreateShippingAddressReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/trade/address/shipping").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminTradeAddressShipping) CreateShippingAddress(req *types.CreateShipp
 	return res, nil
 }
 
-func (c *AdminTradeAddressShipping) PutShippingAddress(req *types.PutShippingAddressRequest) (*types.PutShippingAddressReply, error) {
-	res := &types.PutShippingAddressReply{}
+func (c *AdminTradeAddressShipping) PutShippingAddress(req *powerxtypes.PutShippingAddressRequest) (*powerxtypes.PutShippingAddressReply, error) {
+	res := &powerxtypes.PutShippingAddressReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/address/shipping/%v", req.ShippingAddressId)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminTradeAddressShipping) PutShippingAddress(req *types.PutShippingAdd
 	return res, nil
 }
 
-func (c *AdminTradeAddressShipping) PatchShippingAddress(req *types.PatchShippingAddressRequest) (*types.PatchShippingAddressReply, error) {
-	res := &types.PatchShippingAddressReply{}
+func (c *AdminTradeAddressShipping) PatchShippingAddress(req *powerxtypes.PatchShippingAddressRequest) (*powerxtypes.PatchShippingAddressReply, error) {
+	res := &powerxtypes.PatchShippingAddressReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/address/shipping/%v", req.ShippingAddressId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminTradeAddressShipping) PatchShippingAddress(req *types.PatchShippin
 	return res, nil
 }
 
-func (c *AdminTradeAddressShipping) DeleteShippingAddress(req *types.DeleteShippingAddressRequest) (*types.DeleteShippingAddressReply, error) {
-	res := &types.DeleteShippingAddressReply{}
+func (c *AdminTradeAddressShipping) DeleteShippingAddress(req *powerxtypes.DeleteShippingAddressRequest) (*powerxtypes.DeleteShippingAddressReply, error) {
+	res := &powerxtypes.DeleteShippingAddressReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/address/shipping/%v", req.ShippingAddressId)).
 		Json(req).

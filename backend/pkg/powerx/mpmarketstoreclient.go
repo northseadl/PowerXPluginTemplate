@@ -1,8 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
-
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"net/http"
 )
 
@@ -10,8 +9,8 @@ type MpMarketStore struct {
 	*PowerX
 }
 
-func (c *MpMarketStore) ListStoresPage(req *types.ListStoresPageRequest) (*types.ListStoresPageReply, error) {
-	res := &types.ListStoresPageReply{}
+func (c *MpMarketStore) ListStoresPage(req *powerxtypes.ListStoresPageRequest) (*powerxtypes.ListStoresPageReply, error) {
+	res := &powerxtypes.ListStoresPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/mp/market/stores/page-list").
 		BindQuery(req).

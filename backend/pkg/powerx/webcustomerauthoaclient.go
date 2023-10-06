@@ -1,8 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
-
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"net/http"
 )
 
@@ -10,8 +9,8 @@ type WebCustomerAuthOa struct {
 	*PowerX
 }
 
-func (c *WebCustomerAuthOa) OALogin(req *types.OACustomerLoginRequest) (*types.OACustomerLoginAuthReply, error) {
-	res := &types.OACustomerLoginAuthReply{}
+func (c *WebCustomerAuthOa) OALogin(req *powerxtypes.OACustomerLoginRequest) (*powerxtypes.OACustomerLoginAuthReply, error) {
+	res := &powerxtypes.OACustomerLoginAuthReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/web/customer/oa/login").
 		Json(req).
@@ -22,8 +21,8 @@ func (c *WebCustomerAuthOa) OALogin(req *types.OACustomerLoginRequest) (*types.O
 	return res, nil
 }
 
-func (c *WebCustomerAuthOa) AuthByPhone(req *types.OACustomerAuthRequest) (*types.OACustomerLoginAuthReply, error) {
-	res := &types.OACustomerLoginAuthReply{}
+func (c *WebCustomerAuthOa) AuthByPhone(req *powerxtypes.OACustomerAuthRequest) (*powerxtypes.OACustomerLoginAuthReply, error) {
+	res := &powerxtypes.OACustomerLoginAuthReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/web/customer/oa/authByPhone").
 		Json(req).
@@ -34,8 +33,8 @@ func (c *WebCustomerAuthOa) AuthByPhone(req *types.OACustomerAuthRequest) (*type
 	return res, nil
 }
 
-func (c *WebCustomerAuthOa) AuthByProfile() (*types.OACustomerLoginAuthReply, error) {
-	res := &types.OACustomerLoginAuthReply{}
+func (c *WebCustomerAuthOa) AuthByProfile() (*powerxtypes.OACustomerLoginAuthReply, error) {
+	res := &powerxtypes.OACustomerLoginAuthReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/web/customer/oa/authByProfile").
 		Result(res)

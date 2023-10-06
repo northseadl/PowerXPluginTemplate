@@ -2,8 +2,7 @@ import { loadEnv, mergeConfig } from 'vite';
 import eslint from 'vite-plugin-eslint';
 import baseConfig from './vite.config.base';
 
-const loadedEnv = loadEnv('development', process.cwd());
-// console.log(loadedEnv);
+loadEnv('development', process.cwd());
 
 export default mergeConfig(
   {
@@ -14,9 +13,10 @@ export default mergeConfig(
         strict: true,
       },
       proxy: {
-        '/api': {
-          target: loadedEnv.VITE_RESOURCE_URL ?? 'http://localhost:8888',
+        '/api/plugin/plugin-example': {
+          target: 'http://localhost:8999',
           changeOrigin: true,
+          rewrite: (path: string) => path.replace(/^\/api\/plugin\/plugin-example/, ''),
         },
       },
     },

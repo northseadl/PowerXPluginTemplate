@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminMediaresource struct {
 	*PowerX
 }
 
-func (c *AdminMediaresource) ListMediaResources(req *types.ListMediaResourcesPageRequest) (*types.ListMediaResourcesPageReply, error) {
-	res := &types.ListMediaResourcesPageReply{}
+func (c *AdminMediaresource) ListMediaResources(req *powerxtypes.ListMediaResourcesPageRequest) (*powerxtypes.ListMediaResourcesPageReply, error) {
+	res := &powerxtypes.ListMediaResourcesPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/media/resources/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminMediaresource) ListMediaResources(req *types.ListMediaResourcesPag
 	return res, nil
 }
 
-func (c *AdminMediaresource) CreateMediaResource() (*types.CreateMediaResourceReply, error) {
-	res := &types.CreateMediaResourceReply{}
+func (c *AdminMediaresource) CreateMediaResource() (*powerxtypes.CreateMediaResourceReply, error) {
+	res := &powerxtypes.CreateMediaResourceReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/media/resources").
 		Result(res)
@@ -33,8 +33,8 @@ func (c *AdminMediaresource) CreateMediaResource() (*types.CreateMediaResourceRe
 	return res, nil
 }
 
-func (c *AdminMediaresource) GetMediaResource(req *types.GetMediaResourceRequest) (*types.GetMediaResourceReply, error) {
-	res := &types.GetMediaResourceReply{}
+func (c *AdminMediaresource) GetMediaResource(req *powerxtypes.GetMediaResourceRequest) (*powerxtypes.GetMediaResourceReply, error) {
+	res := &powerxtypes.GetMediaResourceReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/media/resources/%v", req.Id)).
 		BindQuery(req).
@@ -45,8 +45,8 @@ func (c *AdminMediaresource) GetMediaResource(req *types.GetMediaResourceRequest
 	return res, nil
 }
 
-func (c *AdminMediaresource) DeleteMediaResource(req *types.DeleteMediaResourceRequest) (*types.DeleteMediaResourceReply, error) {
-	res := &types.DeleteMediaResourceReply{}
+func (c *AdminMediaresource) DeleteMediaResource(req *powerxtypes.DeleteMediaResourceRequest) (*powerxtypes.DeleteMediaResourceReply, error) {
+	res := &powerxtypes.DeleteMediaResourceReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/media/resources/%v", req.Id)).
 		Json(req).

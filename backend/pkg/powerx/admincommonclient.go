@@ -1,8 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
-
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"net/http"
 )
 
@@ -10,8 +9,8 @@ type AdminCommon struct {
 	*PowerX
 }
 
-func (c *AdminCommon) GetEmployeeOptions(req *types.GetEmployeeOptionsRequest) (*types.GetEmployeeOptionsReply, error) {
-	res := &types.GetEmployeeOptionsReply{}
+func (c *AdminCommon) GetEmployeeOptions(req *powerxtypes.GetEmployeeOptionsRequest) (*powerxtypes.GetEmployeeOptionsReply, error) {
+	res := &powerxtypes.GetEmployeeOptionsReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/common/options/employees").
 		BindQuery(req).
@@ -22,8 +21,8 @@ func (c *AdminCommon) GetEmployeeOptions(req *types.GetEmployeeOptionsRequest) (
 	return res, nil
 }
 
-func (c *AdminCommon) GetEmployeeQueryOptions() (*types.GetEmployeeQueryOptionsReply, error) {
-	res := &types.GetEmployeeQueryOptionsReply{}
+func (c *AdminCommon) GetEmployeeQueryOptions() (*powerxtypes.GetEmployeeQueryOptionsReply, error) {
+	res := &powerxtypes.GetEmployeeQueryOptionsReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/common/options/employee-query").
 		Result(res)
@@ -33,8 +32,8 @@ func (c *AdminCommon) GetEmployeeQueryOptions() (*types.GetEmployeeQueryOptionsR
 	return res, nil
 }
 
-func (c *AdminCommon) GetDepartmentOptions(req *types.GetDepartmentOptionsRequest) (*types.GetDepartmentOptionsReply, error) {
-	res := &types.GetDepartmentOptionsReply{}
+func (c *AdminCommon) GetDepartmentOptions(req *powerxtypes.GetDepartmentOptionsRequest) (*powerxtypes.GetDepartmentOptionsReply, error) {
+	res := &powerxtypes.GetDepartmentOptionsReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/common/options/departments").
 		BindQuery(req).

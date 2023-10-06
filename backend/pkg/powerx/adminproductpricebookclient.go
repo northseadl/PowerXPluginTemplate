@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminProductPricebook struct {
 	*PowerX
 }
 
-func (c *AdminProductPricebook) ListPriceBooks(req *types.ListPriceBooksPageRequest) (*types.ListPriceBooksPageReply, error) {
-	res := &types.ListPriceBooksPageReply{}
+func (c *AdminProductPricebook) ListPriceBooks(req *powerxtypes.ListPriceBooksPageRequest) (*powerxtypes.ListPriceBooksPageReply, error) {
+	res := &powerxtypes.ListPriceBooksPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/product/price-books/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminProductPricebook) ListPriceBooks(req *types.ListPriceBooksPageRequ
 	return res, nil
 }
 
-func (c *AdminProductPricebook) GetPriceBook(req *types.GetPriceBookRequest) (*types.GetPriceBookReply, error) {
-	res := &types.GetPriceBookReply{}
+func (c *AdminProductPricebook) GetPriceBook(req *powerxtypes.GetPriceBookRequest) (*powerxtypes.GetPriceBookReply, error) {
+	res := &powerxtypes.GetPriceBookReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/product/price-books/%v", req.PriceBook)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminProductPricebook) GetPriceBook(req *types.GetPriceBookRequest) (*t
 	return res, nil
 }
 
-func (c *AdminProductPricebook) UpsertPriceBook(req *types.UpsertPriceBookRequest) (*types.UpsertPriceBookReply, error) {
-	res := &types.UpsertPriceBookReply{}
+func (c *AdminProductPricebook) UpsertPriceBook(req *powerxtypes.UpsertPriceBookRequest) (*powerxtypes.UpsertPriceBookReply, error) {
+	res := &powerxtypes.UpsertPriceBookReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri("/api/v1/admin/product/price-books").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminProductPricebook) UpsertPriceBook(req *types.UpsertPriceBookReques
 	return res, nil
 }
 
-func (c *AdminProductPricebook) DeletePriceBook(req *types.DeletePriceBookRequest) (*types.DeletePriceBookReply, error) {
-	res := &types.DeletePriceBookReply{}
+func (c *AdminProductPricebook) DeletePriceBook(req *powerxtypes.DeletePriceBookRequest) (*powerxtypes.DeletePriceBookReply, error) {
+	res := &powerxtypes.DeletePriceBookReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/product/price-books/%v", req.Id)).
 		Json(req).

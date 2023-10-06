@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminTradeAddressDelivery struct {
 	*PowerX
 }
 
-func (c *AdminTradeAddressDelivery) ListDeliveryAddressesPage(req *types.ListDeliveryAddressesPageRequest) (*types.ListDeliveryAddressesPageReply, error) {
-	res := &types.ListDeliveryAddressesPageReply{}
+func (c *AdminTradeAddressDelivery) ListDeliveryAddressesPage(req *powerxtypes.ListDeliveryAddressesPageRequest) (*powerxtypes.ListDeliveryAddressesPageReply, error) {
+	res := &powerxtypes.ListDeliveryAddressesPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/trade/address/delivery/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminTradeAddressDelivery) ListDeliveryAddressesPage(req *types.ListDel
 	return res, nil
 }
 
-func (c *AdminTradeAddressDelivery) GetDeliveryAddress(req *types.GetDeliveryAddressRequest) (*types.GetDeliveryAddressReply, error) {
-	res := &types.GetDeliveryAddressReply{}
+func (c *AdminTradeAddressDelivery) GetDeliveryAddress(req *powerxtypes.GetDeliveryAddressRequest) (*powerxtypes.GetDeliveryAddressReply, error) {
+	res := &powerxtypes.GetDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/address/delivery/%v", req.DeliveryAddressId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminTradeAddressDelivery) GetDeliveryAddress(req *types.GetDeliveryAdd
 	return res, nil
 }
 
-func (c *AdminTradeAddressDelivery) CreateDeliveryAddress(req *types.CreateDeliveryAddressRequest) (*types.CreateDeliveryAddressReply, error) {
-	res := &types.CreateDeliveryAddressReply{}
+func (c *AdminTradeAddressDelivery) CreateDeliveryAddress(req *powerxtypes.CreateDeliveryAddressRequest) (*powerxtypes.CreateDeliveryAddressReply, error) {
+	res := &powerxtypes.CreateDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/trade/address/delivery").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminTradeAddressDelivery) CreateDeliveryAddress(req *types.CreateDeliv
 	return res, nil
 }
 
-func (c *AdminTradeAddressDelivery) PutDeliveryAddress(req *types.PutDeliveryAddressRequest) (*types.PutDeliveryAddressReply, error) {
-	res := &types.PutDeliveryAddressReply{}
+func (c *AdminTradeAddressDelivery) PutDeliveryAddress(req *powerxtypes.PutDeliveryAddressRequest) (*powerxtypes.PutDeliveryAddressReply, error) {
+	res := &powerxtypes.PutDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/address/delivery/%v", req.DeliveryAddressId)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminTradeAddressDelivery) PutDeliveryAddress(req *types.PutDeliveryAdd
 	return res, nil
 }
 
-func (c *AdminTradeAddressDelivery) PatchDeliveryAddress(req *types.PatchDeliveryAddressRequest) (*types.PatchDeliveryAddressReply, error) {
-	res := &types.PatchDeliveryAddressReply{}
+func (c *AdminTradeAddressDelivery) PatchDeliveryAddress(req *powerxtypes.PatchDeliveryAddressRequest) (*powerxtypes.PatchDeliveryAddressReply, error) {
+	res := &powerxtypes.PatchDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/address/delivery/%v", req.DeliveryAddressId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminTradeAddressDelivery) PatchDeliveryAddress(req *types.PatchDeliver
 	return res, nil
 }
 
-func (c *AdminTradeAddressDelivery) DeleteDeliveryAddress(req *types.DeleteDeliveryAddressRequest) (*types.DeleteDeliveryAddressReply, error) {
-	res := &types.DeleteDeliveryAddressReply{}
+func (c *AdminTradeAddressDelivery) DeleteDeliveryAddress(req *powerxtypes.DeleteDeliveryAddressRequest) (*powerxtypes.DeleteDeliveryAddressReply, error) {
+	res := &powerxtypes.DeleteDeliveryAddressReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/address/delivery/%v", req.DeliveryAddressId)).
 		Json(req).

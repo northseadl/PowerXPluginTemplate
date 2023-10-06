@@ -115,7 +115,7 @@ func (b *Builder) BuildFrontend(relativeDir string) error {
 		return fmt.Errorf("exec npm install failed: %v", err)
 	}
 
-	cmd = exec.CommandContext(ctx, "yarn", "run", "prebuild")
+	cmd = exec.CommandContext(ctx, "yarn", "run", "type:check")
 	cmd.Dir = filepath.Join(b.workDir, relativeDir)
 	initCmdOutput(cmd)
 	if err := cmd.Run(); err != nil {

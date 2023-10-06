@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminTradePayment struct {
 	*PowerX
 }
 
-func (c *AdminTradePayment) ListPaymentsPage(req *types.ListPaymentsPageRequest) (*types.ListPaymentsPageReply, error) {
-	res := &types.ListPaymentsPageReply{}
+func (c *AdminTradePayment) ListPaymentsPage(req *powerxtypes.ListPaymentsPageRequest) (*powerxtypes.ListPaymentsPageReply, error) {
+	res := &powerxtypes.ListPaymentsPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/trade/payments/page-list").
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminTradePayment) ListPaymentsPage(req *types.ListPaymentsPageRequest)
 	return res, nil
 }
 
-func (c *AdminTradePayment) GetPayment(req *types.GetPaymentRequest) (*types.GetPaymentReply, error) {
-	res := &types.GetPaymentReply{}
+func (c *AdminTradePayment) GetPayment(req *powerxtypes.GetPaymentRequest) (*powerxtypes.GetPaymentReply, error) {
+	res := &powerxtypes.GetPaymentReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/payments/%v", req.PaymentId)).
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminTradePayment) GetPayment(req *types.GetPaymentRequest) (*types.Get
 	return res, nil
 }
 
-func (c *AdminTradePayment) CreatePayment(req *types.CreatePaymentRequest) (*types.CreatePaymentReply, error) {
-	res := &types.CreatePaymentReply{}
+func (c *AdminTradePayment) CreatePayment(req *powerxtypes.CreatePaymentRequest) (*powerxtypes.CreatePaymentReply, error) {
+	res := &powerxtypes.CreatePaymentReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/trade/payments").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminTradePayment) CreatePayment(req *types.CreatePaymentRequest) (*typ
 	return res, nil
 }
 
-func (c *AdminTradePayment) PutPayment(req *types.PutPaymentRequest) (*types.PutPaymentReply, error) {
-	res := &types.PutPaymentReply{}
+func (c *AdminTradePayment) PutPayment(req *powerxtypes.PutPaymentRequest) (*powerxtypes.PutPaymentReply, error) {
+	res := &powerxtypes.PutPaymentReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/payments/%v", req.PaymentId)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminTradePayment) PutPayment(req *types.PutPaymentRequest) (*types.Put
 	return res, nil
 }
 
-func (c *AdminTradePayment) PatchPayment(req *types.PatchPaymentRequest) (*types.PatchPaymentReply, error) {
-	res := &types.PatchPaymentReply{}
+func (c *AdminTradePayment) PatchPayment(req *powerxtypes.PatchPaymentRequest) (*powerxtypes.PatchPaymentReply, error) {
+	res := &powerxtypes.PatchPaymentReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/payments/%v", req.PaymentId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminTradePayment) PatchPayment(req *types.PatchPaymentRequest) (*types
 	return res, nil
 }
 
-func (c *AdminTradePayment) DeletePayment(req *types.DeletePaymentRequest) (*types.DeletePaymentReply, error) {
-	res := &types.DeletePaymentReply{}
+func (c *AdminTradePayment) DeletePayment(req *powerxtypes.DeletePaymentRequest) (*powerxtypes.DeletePaymentReply, error) {
+	res := &powerxtypes.DeletePaymentReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/trade/payments/%v", req.PaymentId)).
 		Json(req).

@@ -15,9 +15,9 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			[]rest.Middleware{serverCtx.PluginMiddleware},
 			[]rest.Route{
 				{
-					Method:  http.MethodPost,
-					Path:    "/example",
-					Handler: ExampleHandler(serverCtx),
+					Method:  http.MethodGet,
+					Path:    "/employee/info/:id",
+					Handler: EmployeeInfoHandler(serverCtx),
 				},
 			}...,
 		),

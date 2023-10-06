@@ -10,6 +10,9 @@ func WithCtxAuthorization(ctx context.Context, token string) context.Context {
 }
 
 func FromCtxAuthorization(ctx context.Context) (string, bool) {
+	if ctx.Value("Authorization") == nil {
+		return "", false
+	}
 	return ctx.Value("Authorization").(string), true
 }
 

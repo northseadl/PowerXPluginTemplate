@@ -1,7 +1,7 @@
 package powerx
 
 import (
-	"PluginTemplate/pkg/powerx/types"
+	"PluginTemplate/pkg/powerx/powerxtypes"
 	"fmt"
 	"net/http"
 )
@@ -10,8 +10,8 @@ type AdminCustomerdomainLeader struct {
 	*PowerX
 }
 
-func (c *AdminCustomerdomainLeader) GetLead(req *types.GetLeadReqeuest) (*types.GetLeadReply, error) {
-	res := &types.GetLeadReply{}
+func (c *AdminCustomerdomainLeader) GetLead(req *powerxtypes.GetLeadReqeuest) (*powerxtypes.GetLeadReply, error) {
+	res := &powerxtypes.GetLeadReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/leads/%v", req.Id)).
 		BindQuery(req).
@@ -22,8 +22,8 @@ func (c *AdminCustomerdomainLeader) GetLead(req *types.GetLeadReqeuest) (*types.
 	return res, nil
 }
 
-func (c *AdminCustomerdomainLeader) ListLeadsPage(req *types.ListLeadsPageRequest) (*types.ListLeadsPageReply, error) {
-	res := &types.ListLeadsPageReply{}
+func (c *AdminCustomerdomainLeader) ListLeadsPage(req *powerxtypes.ListLeadsPageRequest) (*powerxtypes.ListLeadsPageReply, error) {
+	res := &powerxtypes.ListLeadsPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
 		Uri("/api/v1/admin/customerdomain/leads/page-list").
 		BindQuery(req).
@@ -34,8 +34,8 @@ func (c *AdminCustomerdomainLeader) ListLeadsPage(req *types.ListLeadsPageReques
 	return res, nil
 }
 
-func (c *AdminCustomerdomainLeader) CreateLead(req *types.CreateLeadRequest) (*types.CreateLeadReply, error) {
-	res := &types.CreateLeadReply{}
+func (c *AdminCustomerdomainLeader) CreateLead(req *powerxtypes.CreateLeadRequest) (*powerxtypes.CreateLeadReply, error) {
+	res := &powerxtypes.CreateLeadReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri("/api/v1/admin/customerdomain/leads").
 		Json(req).
@@ -46,8 +46,8 @@ func (c *AdminCustomerdomainLeader) CreateLead(req *types.CreateLeadRequest) (*t
 	return res, nil
 }
 
-func (c *AdminCustomerdomainLeader) PutLead(req *types.PutLeadRequest) (*types.PutLeadReply, error) {
-	res := &types.PutLeadReply{}
+func (c *AdminCustomerdomainLeader) PutLead(req *powerxtypes.PutLeadRequest) (*powerxtypes.PutLeadReply, error) {
+	res := &powerxtypes.PutLeadReply{}
 	err := c.H.Df().Method(http.MethodPut).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/leads/%v", req.LeadId)).
 		Json(req).
@@ -58,8 +58,8 @@ func (c *AdminCustomerdomainLeader) PutLead(req *types.PutLeadRequest) (*types.P
 	return res, nil
 }
 
-func (c *AdminCustomerdomainLeader) PatchLead(req *types.PatchLeadRequest) (*types.PatchLeadReply, error) {
-	res := &types.PatchLeadReply{}
+func (c *AdminCustomerdomainLeader) PatchLead(req *powerxtypes.PatchLeadRequest) (*powerxtypes.PatchLeadReply, error) {
+	res := &powerxtypes.PatchLeadReply{}
 	err := c.H.Df().Method(http.MethodPatch).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/leads/%v", req.LeadId)).
 		Json(req).
@@ -70,8 +70,8 @@ func (c *AdminCustomerdomainLeader) PatchLead(req *types.PatchLeadRequest) (*typ
 	return res, nil
 }
 
-func (c *AdminCustomerdomainLeader) DeleteLead(req *types.DeleteLeadRequest) (*types.DeleteLeadReply, error) {
-	res := &types.DeleteLeadReply{}
+func (c *AdminCustomerdomainLeader) DeleteLead(req *powerxtypes.DeleteLeadRequest) (*powerxtypes.DeleteLeadReply, error) {
+	res := &powerxtypes.DeleteLeadReply{}
 	err := c.H.Df().Method(http.MethodDelete).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/leads/%v", req.Id)).
 		Json(req).
@@ -82,8 +82,8 @@ func (c *AdminCustomerdomainLeader) DeleteLead(req *types.DeleteLeadRequest) (*t
 	return res, nil
 }
 
-func (c *AdminCustomerdomainLeader) AssignLeadToEmployee(req *types.AssignLeadToEmployeeRequest) (*types.AssignLeadToEmployeeReply, error) {
-	res := &types.AssignLeadToEmployeeReply{}
+func (c *AdminCustomerdomainLeader) AssignLeadToEmployee(req *powerxtypes.AssignLeadToEmployeeRequest) (*powerxtypes.AssignLeadToEmployeeReply, error) {
+	res := &powerxtypes.AssignLeadToEmployeeReply{}
 	err := c.H.Df().Method(http.MethodPost).
 		Uri(fmt.Sprintf("/api/v1/admin/customerdomain/leads/%v/actions/employees", req.Id)).
 		Json(req).
