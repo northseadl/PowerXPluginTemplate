@@ -1,28 +1,28 @@
 import { AppRouteRecordRaw } from '@/router/routes/types';
 import { PLUGIN_LAYOUT } from '@/router/routes/base';
 
-const Example: AppRouteRecordRaw = {
-  path: '/example',
-  name: 'Example',
+const PluginExample: AppRouteRecordRaw = {
+  path: '/plugin-example',
+  name: 'PluginExample',
   component: PLUGIN_LAYOUT,
-  redirect: '/example/index',
+  redirect: '/plugin-example/index',
   meta: {
-    locale: 'menu.exmaple',
+    locale: '插件示例',
     icon: 'icon-settings',
     requiresAuth: true,
     order: 3,
   },
   children: [
     {
-      path: '/example/index',
-      name: 'ExampleIndex',
+      path: '/plugin-example/index',
+      name: 'PluginExampleIndex',
       component: () => import('@/views/plugin-example/index.vue'),
       meta: {
-        locale: 'menu.exmaple',
+        locale: '插件示例',
         requiresAuth: true,
       },
     },
   ],
 };
 
-export default Example;
+export default PluginExample;

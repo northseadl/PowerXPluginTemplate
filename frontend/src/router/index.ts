@@ -13,7 +13,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: 'Home',
+      redirect: '/home',
     },
     ...appRoutes,
     HOME_ROUTE,

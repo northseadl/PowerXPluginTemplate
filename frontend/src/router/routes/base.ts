@@ -6,7 +6,7 @@ export const EMPTY_LAYOUT = () => import('@/layout/empty-layout.vue');
 
 export const REDIRECT_MAIN: RouteRecordRaw = {
   path: '/redirect',
-  name: 'redirectWrapper',
+  name: 'RedirectWrapper',
   component: EMPTY_LAYOUT,
   meta: {
     requiresAuth: true,
@@ -34,6 +34,6 @@ export const NOT_FOUND_ROUTE: RouteRecordRaw = {
 // home
 export const HOME_ROUTE: RouteRecordRaw = {
   path: '/home',
-  name: 'Home',
+  name: 'home',
   component: () => import('@/views/home/index.vue'),
 };
