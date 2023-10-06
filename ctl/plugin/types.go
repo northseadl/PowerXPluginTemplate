@@ -1,5 +1,9 @@
 package plugin
 
+type Info struct {
+	Name string `yaml:"name"`
+}
+
 type BuildInfo struct {
 	Name        string `yaml:"name"`
 	Description string `yaml:"description"`

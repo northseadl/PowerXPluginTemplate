@@ -10,7 +10,7 @@ var BuildCmd = &cli.Command{
 		if err != nil {
 			return err
 		}
-		if err = builder.CheckDependencies(); err != nil {
+		if err = builder.Check(); err != nil {
 			return err
 		}
 		if err = builder.BuildBackend("backend"); err != nil {

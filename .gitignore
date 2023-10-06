@@ -10,3 +10,4 @@
 /.idea/PowerXPluginTemplate.iml
 /.idea/vcs.xml
 /frontend/node_modules/
+/frontend/dist/
