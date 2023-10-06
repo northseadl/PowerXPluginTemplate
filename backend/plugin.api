@@ -8,10 +8,6 @@ info(
 	version: "v1"
 )
 
-@server(
-	middleware: PluginMiddleware
-)
-
 service PluginTemplate {
 	@handler EmployeeInfo
 	get /employee/info/:id (EmployeeInfoRequest) returns (EmployeeInfoReply)

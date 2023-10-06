@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-input v-model="state.id" placeholder="请输入员工id"></a-input>
+    <a-input-number v-model="state.id" placeholder="请输入员工id"></a-input-number>
     <a-button type="primary" @click="onClick">查询</a-button>
   </div>
 </template>

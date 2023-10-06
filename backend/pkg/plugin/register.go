@@ -31,16 +31,14 @@ func RegisterPluginToHost(host string, plugin *Plugin) (EtcMap, error) {
 		return nil, fmt.Errorf("register plugin failed, status code %v, body %s", response.StatusCode, string(body))
 	}
 
-	content := make(map[string]any)
+	content := struct {
+		Name string `json:"name"`
+		Etc  EtcMap `json:"etc"`
+	}{}
 	err = json.NewDecoder(response.Body).Decode(&content)
 	if err != nil {
 		return nil, err
 	}
 
-	etc, ok := content["etc"].(EtcMap)
-	if !ok {
-		return nil, fmt.Errorf("register plugin failed, etc not found")
-	}
-
-	return etc, nil
+	return content.Etc, nil
 }

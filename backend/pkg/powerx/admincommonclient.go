@@ -2,6 +2,8 @@ package powerx
 
 import (
 	"PluginTemplate/pkg/powerx/powerxtypes"
+	"context"
+
 	"net/http"
 )
 
@@ -9,9 +11,10 @@ type AdminCommon struct {
 	*PowerX
 }
 
-func (c *AdminCommon) GetEmployeeOptions(req *powerxtypes.GetEmployeeOptionsRequest) (*powerxtypes.GetEmployeeOptionsReply, error) {
+func (c *AdminCommon) GetEmployeeOptions(ctx context.Context, req *powerxtypes.GetEmployeeOptionsRequest) (*powerxtypes.GetEmployeeOptionsReply, error) {
 	res := &powerxtypes.GetEmployeeOptionsReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri("/api/v1/admin/common/options/employees").
 		BindQuery(req).
 		Result(res)
@@ -21,9 +24,10 @@ func (c *AdminCommon) GetEmployeeOptions(req *powerxtypes.GetEmployeeOptionsRequ
 	return res, nil
 }
 
-func (c *AdminCommon) GetEmployeeQueryOptions() (*powerxtypes.GetEmployeeQueryOptionsReply, error) {
+func (c *AdminCommon) GetEmployeeQueryOptions(ctx context.Context) (*powerxtypes.GetEmployeeQueryOptionsReply, error) {
 	res := &powerxtypes.GetEmployeeQueryOptionsReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri("/api/v1/admin/common/options/employee-query").
 		Result(res)
 	if err != nil {
@@ -32,9 +36,10 @@ func (c *AdminCommon) GetEmployeeQueryOptions() (*powerxtypes.GetEmployeeQueryOp
 	return res, nil
 }
 
-func (c *AdminCommon) GetDepartmentOptions(req *powerxtypes.GetDepartmentOptionsRequest) (*powerxtypes.GetDepartmentOptionsReply, error) {
+func (c *AdminCommon) GetDepartmentOptions(ctx context.Context, req *powerxtypes.GetDepartmentOptionsRequest) (*powerxtypes.GetDepartmentOptionsReply, error) {
 	res := &powerxtypes.GetDepartmentOptionsReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri("/api/v1/admin/common/options/departments").
 		BindQuery(req).
 		Result(res)

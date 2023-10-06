@@ -10,5 +10,5 @@ type Config struct {
 }
 
 type PowerXPlugin struct {
-	AppKey string
+	AppKey string `json:"appKey"`
 }

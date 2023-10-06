@@ -2,6 +2,7 @@ package powerx
 
 import (
 	"PluginTemplate/pkg/powerx/powerxtypes"
+	"context"
 	"fmt"
 	"net/http"
 )
@@ -10,9 +11,10 @@ type AdminPermission struct {
 	*PowerX
 }
 
-func (c *AdminPermission) ListRoles() (*powerxtypes.ListRolesReply, error) {
+func (c *AdminPermission) ListRoles(ctx context.Context) (*powerxtypes.ListRolesReply, error) {
 	res := &powerxtypes.ListRolesReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri("/api/v1/admin/permission/roles").
 		Result(res)
 	if err != nil {
@@ -21,9 +23,10 @@ func (c *AdminPermission) ListRoles() (*powerxtypes.ListRolesReply, error) {
 	return res, nil
 }
 
-func (c *AdminPermission) CreateRole(req *powerxtypes.CreateRoleRequest) (*powerxtypes.CreateRoleReply, error) {
+func (c *AdminPermission) CreateRole(ctx context.Context, req *powerxtypes.CreateRoleRequest) (*powerxtypes.CreateRoleReply, error) {
 	res := &powerxtypes.CreateRoleReply{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri("/api/v1/admin/permission/roles").
 		Json(req).
 		Result(res)
@@ -33,9 +36,10 @@ func (c *AdminPermission) CreateRole(req *powerxtypes.CreateRoleRequest) (*power
 	return res, nil
 }
 
-func (c *AdminPermission) GetRole(req *powerxtypes.GetRoleRequest) (*powerxtypes.GetRoleReply, error) {
+func (c *AdminPermission) GetRole(ctx context.Context, req *powerxtypes.GetRoleRequest) (*powerxtypes.GetRoleReply, error) {
 	res := &powerxtypes.GetRoleReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v", req.RoleCode)).
 		BindQuery(req).
 		Result(res)
@@ -45,9 +49,10 @@ func (c *AdminPermission) GetRole(req *powerxtypes.GetRoleRequest) (*powerxtypes
 	return res, nil
 }
 
-func (c *AdminPermission) PatchRole(req *powerxtypes.PatchRoleReqeust) (*powerxtypes.PatchRoleReply, error) {
+func (c *AdminPermission) PatchRole(ctx context.Context, req *powerxtypes.PatchRoleReqeust) (*powerxtypes.PatchRoleReply, error) {
 	res := &powerxtypes.PatchRoleReply{}
 	err := c.H.Df().Method(http.MethodPatch).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v", req.RoleCode)).
 		Json(req).
 		Result(res)
@@ -57,9 +62,10 @@ func (c *AdminPermission) PatchRole(req *powerxtypes.PatchRoleReqeust) (*powerxt
 	return res, nil
 }
 
-func (c *AdminPermission) GetRoleEmployees(req *powerxtypes.GetRoleEmployeesReqeust) (*powerxtypes.GetRoleEmployeesReply, error) {
+func (c *AdminPermission) GetRoleEmployees(ctx context.Context, req *powerxtypes.GetRoleEmployeesReqeust) (*powerxtypes.GetRoleEmployeesReply, error) {
 	res := &powerxtypes.GetRoleEmployeesReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v/users", req.RoleCode)).
 		BindQuery(req).
 		Result(res)
@@ -69,9 +75,10 @@ func (c *AdminPermission) GetRoleEmployees(req *powerxtypes.GetRoleEmployeesReqe
 	return res, nil
 }
 
-func (c *AdminPermission) SetRolePermissions(req *powerxtypes.SetRolePermissionsRequest) (*powerxtypes.SetRolePermissionsReply, error) {
+func (c *AdminPermission) SetRolePermissions(ctx context.Context, req *powerxtypes.SetRolePermissionsRequest) (*powerxtypes.SetRolePermissionsReply, error) {
 	res := &powerxtypes.SetRolePermissionsReply{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v/actions/set-permissions", req.RoleCode)).
 		Json(req).
 		Result(res)
@@ -81,9 +88,10 @@ func (c *AdminPermission) SetRolePermissions(req *powerxtypes.SetRolePermissions
 	return res, nil
 }
 
-func (c *AdminPermission) ListAPI(req *powerxtypes.ListAPIRequest) (*powerxtypes.ListAPIReply, error) {
+func (c *AdminPermission) ListAPI(ctx context.Context, req *powerxtypes.ListAPIRequest) (*powerxtypes.ListAPIReply, error) {
 	res := &powerxtypes.ListAPIReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri("/api/v1/admin/permission/api-list").
 		BindQuery(req).
 		Result(res)
@@ -93,9 +101,10 @@ func (c *AdminPermission) ListAPI(req *powerxtypes.ListAPIRequest) (*powerxtypes
 	return res, nil
 }
 
-func (c *AdminPermission) SetRoleEmployees(req *powerxtypes.SetRoleEmployeesRequest) (*powerxtypes.SetRoleEmployeesReply, error) {
+func (c *AdminPermission) SetRoleEmployees(ctx context.Context, req *powerxtypes.SetRoleEmployeesRequest) (*powerxtypes.SetRoleEmployeesReply, error) {
 	res := &powerxtypes.SetRoleEmployeesReply{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/admin/permission/roles/%v/actions/set-employees", req.RoleCode)).
 		Json(req).
 		Result(res)
@@ -105,9 +114,10 @@ func (c *AdminPermission) SetRoleEmployees(req *powerxtypes.SetRoleEmployeesRequ
 	return res, nil
 }
 
-func (c *AdminPermission) SetUserRoles(req *powerxtypes.SetUserRolesRequest) (*powerxtypes.SetUserRolesReply, error) {
+func (c *AdminPermission) SetUserRoles(ctx context.Context, req *powerxtypes.SetUserRolesRequest) (*powerxtypes.SetUserRolesReply, error) {
 	res := &powerxtypes.SetUserRolesReply{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/admin/permission/users/%v/actions/set-roles", req.UserId)).
 		Json(req).
 		Result(res)

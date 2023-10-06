@@ -27,6 +27,7 @@ func main() {
 
 	c := config.Config{RestConf: restConf}
 	c.Endpoint = fmt.Sprintf("http://%s", *host)
+	c.Mode = *mode
 	ctx := svc.NewServiceContext(c)
 	handler.RegisterHandlers(server, ctx)
 
@@ -39,6 +40,8 @@ func main() {
 	}
 
 	ctx.Setup()
+
+	server.Use(ctx.PluginMiddleware)
 
 	slog.Info(fmt.Sprintf("Plugin %s start at %s", *name, restPlugin.Data()["addr"]))
 	server.Start()

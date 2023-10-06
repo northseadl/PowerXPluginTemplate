@@ -23,7 +23,7 @@ func NewEmployeeInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Empl
 }
 
 func (l *EmployeeInfoLogic) EmployeeInfo(req *types.EmployeeInfoRequest) (resp *types.EmployeeInfoReply, err error) {
-	res, err := l.svcCtx.PowerX.AdminEmployee.GetEmployee(&powerxtypes.GetEmployeeRequest{
+	res, err := l.svcCtx.PowerX.AdminEmployee.GetEmployee(l.ctx, &powerxtypes.GetEmployeeRequest{
 		Id: req.EmployeeId,
 	})
 	if err != nil {

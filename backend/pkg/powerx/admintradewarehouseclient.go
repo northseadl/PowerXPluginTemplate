@@ -1,7 +1,9 @@
 package powerx
 
 import (
-	powerxtypes "PluginTemplate/pkg/powerx/powerxtypes"
+	"PluginTemplate/pkg/powerx/powerxtypes"
+	"context"
+
 	"net/http"
 )
 
@@ -9,9 +11,10 @@ type AdminTradeWarehouse struct {
 	*PowerX
 }
 
-func (c *AdminTradeWarehouse) ListWarehouses(req *powerxtypes.ListWarehousesRequest) (*powerxtypes.ListWarehousesResponse, error) {
+func (c *AdminTradeWarehouse) ListWarehouses(ctx context.Context, req *powerxtypes.ListWarehousesRequest) (*powerxtypes.ListWarehousesResponse, error) {
 	res := &powerxtypes.ListWarehousesResponse{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri("/api/v1/admin/trade/warehouses").
 		BindQuery(req).
 		Result(res)
@@ -21,9 +24,10 @@ func (c *AdminTradeWarehouse) ListWarehouses(req *powerxtypes.ListWarehousesRequ
 	return res, nil
 }
 
-func (c *AdminTradeWarehouse) GetWarehouse(req *powerxtypes.GetWarehouseRequest) (*powerxtypes.GetWarehouseResponse, error) {
+func (c *AdminTradeWarehouse) GetWarehouse(ctx context.Context, req *powerxtypes.GetWarehouseRequest) (*powerxtypes.GetWarehouseResponse, error) {
 	res := &powerxtypes.GetWarehouseResponse{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri("/api/v1/admin/trade/warehouses/:id").
 		BindQuery(req).
 		Result(res)
@@ -33,9 +37,10 @@ func (c *AdminTradeWarehouse) GetWarehouse(req *powerxtypes.GetWarehouseRequest)
 	return res, nil
 }
 
-func (c *AdminTradeWarehouse) CreateWarehouse(req *powerxtypes.CreateWarehouseRequest) (*powerxtypes.CreateWarehouseResponse, error) {
+func (c *AdminTradeWarehouse) CreateWarehouse(ctx context.Context, req *powerxtypes.CreateWarehouseRequest) (*powerxtypes.CreateWarehouseResponse, error) {
 	res := &powerxtypes.CreateWarehouseResponse{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri("/api/v1/admin/trade/warehouses").
 		Json(req).
 		Result(res)
@@ -45,9 +50,10 @@ func (c *AdminTradeWarehouse) CreateWarehouse(req *powerxtypes.CreateWarehouseRe
 	return res, nil
 }
 
-func (c *AdminTradeWarehouse) UpdateWarehouse(req *powerxtypes.UpdateWarehouseRequest) (*powerxtypes.UpdateWarehouseResponse, error) {
+func (c *AdminTradeWarehouse) UpdateWarehouse(ctx context.Context, req *powerxtypes.UpdateWarehouseRequest) (*powerxtypes.UpdateWarehouseResponse, error) {
 	res := &powerxtypes.UpdateWarehouseResponse{}
 	err := c.H.Df().Method(http.MethodPut).
+		WithContext(ctx).
 		Uri("/api/v1/admin/trade/warehouses/:id").
 		Json(req).
 		Result(res)
@@ -57,9 +63,10 @@ func (c *AdminTradeWarehouse) UpdateWarehouse(req *powerxtypes.UpdateWarehouseRe
 	return res, nil
 }
 
-func (c *AdminTradeWarehouse) PatchWarehouse(req *powerxtypes.PatchWarehouseRequest) (*powerxtypes.PatchWarehouseResponse, error) {
+func (c *AdminTradeWarehouse) PatchWarehouse(ctx context.Context, req *powerxtypes.PatchWarehouseRequest) (*powerxtypes.PatchWarehouseResponse, error) {
 	res := &powerxtypes.PatchWarehouseResponse{}
 	err := c.H.Df().Method(http.MethodPatch).
+		WithContext(ctx).
 		Uri("/api/v1/admin/trade/warehouses/:id").
 		Json(req).
 		Result(res)
@@ -69,9 +76,10 @@ func (c *AdminTradeWarehouse) PatchWarehouse(req *powerxtypes.PatchWarehouseRequ
 	return res, nil
 }
 
-func (c *AdminTradeWarehouse) DeleteWarehouse(req *powerxtypes.DeleteWarehouseRequest) (*powerxtypes.DeleteWarehouseResponse, error) {
+func (c *AdminTradeWarehouse) DeleteWarehouse(ctx context.Context, req *powerxtypes.DeleteWarehouseRequest) (*powerxtypes.DeleteWarehouseResponse, error) {
 	res := &powerxtypes.DeleteWarehouseResponse{}
 	err := c.H.Df().Method(http.MethodDelete).
+		WithContext(ctx).
 		Uri("/api/v1/admin/trade/warehouses/:id").
 		Json(req).
 		Result(res)

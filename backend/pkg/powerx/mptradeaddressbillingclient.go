@@ -2,6 +2,7 @@ package powerx
 
 import (
 	"PluginTemplate/pkg/powerx/powerxtypes"
+	"context"
 	"fmt"
 	"net/http"
 )
@@ -10,9 +11,10 @@ type MpTradeAddressBilling struct {
 	*PowerX
 }
 
-func (c *MpTradeAddressBilling) ListBillingAddressesPage(req *powerxtypes.ListBillingAddressesPageRequest) (*powerxtypes.ListBillingAddressesPageReply, error) {
+func (c *MpTradeAddressBilling) ListBillingAddressesPage(ctx context.Context, req *powerxtypes.ListBillingAddressesPageRequest) (*powerxtypes.ListBillingAddressesPageReply, error) {
 	res := &powerxtypes.ListBillingAddressesPageReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri("/api/v1/mp/trade/address/billing/page-list").
 		BindQuery(req).
 		Result(res)
@@ -22,9 +24,10 @@ func (c *MpTradeAddressBilling) ListBillingAddressesPage(req *powerxtypes.ListBi
 	return res, nil
 }
 
-func (c *MpTradeAddressBilling) GetBillingAddress(req *powerxtypes.GetBillingAddressRequest) (*powerxtypes.GetBillingAddressReply, error) {
+func (c *MpTradeAddressBilling) GetBillingAddress(ctx context.Context, req *powerxtypes.GetBillingAddressRequest) (*powerxtypes.GetBillingAddressReply, error) {
 	res := &powerxtypes.GetBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodGet).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%v", req.BillingAddressId)).
 		BindQuery(req).
 		Result(res)
@@ -34,9 +37,10 @@ func (c *MpTradeAddressBilling) GetBillingAddress(req *powerxtypes.GetBillingAdd
 	return res, nil
 }
 
-func (c *MpTradeAddressBilling) CreateBillingAddress(req *powerxtypes.CreateBillingAddressRequest) (*powerxtypes.CreateBillingAddressReply, error) {
+func (c *MpTradeAddressBilling) CreateBillingAddress(ctx context.Context, req *powerxtypes.CreateBillingAddressRequest) (*powerxtypes.CreateBillingAddressReply, error) {
 	res := &powerxtypes.CreateBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri("/api/v1/mp/trade/address/billing").
 		Json(req).
 		Result(res)
@@ -46,9 +50,10 @@ func (c *MpTradeAddressBilling) CreateBillingAddress(req *powerxtypes.CreateBill
 	return res, nil
 }
 
-func (c *MpTradeAddressBilling) PutBillingAddress(req *powerxtypes.PutBillingAddressRequest) (*powerxtypes.PutBillingAddressReply, error) {
+func (c *MpTradeAddressBilling) PutBillingAddress(ctx context.Context, req *powerxtypes.PutBillingAddressRequest) (*powerxtypes.PutBillingAddressReply, error) {
 	res := &powerxtypes.PutBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodPut).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)
@@ -58,9 +63,10 @@ func (c *MpTradeAddressBilling) PutBillingAddress(req *powerxtypes.PutBillingAdd
 	return res, nil
 }
 
-func (c *MpTradeAddressBilling) PatchBillingAddress(req *powerxtypes.PatchBillingAddressRequest) (*powerxtypes.PatchBillingAddressReply, error) {
+func (c *MpTradeAddressBilling) PatchBillingAddress(ctx context.Context, req *powerxtypes.PatchBillingAddressRequest) (*powerxtypes.PatchBillingAddressReply, error) {
 	res := &powerxtypes.PatchBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodPatch).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)
@@ -70,9 +76,10 @@ func (c *MpTradeAddressBilling) PatchBillingAddress(req *powerxtypes.PatchBillin
 	return res, nil
 }
 
-func (c *MpTradeAddressBilling) DeleteBillingAddress(req *powerxtypes.DeleteBillingAddressRequest) (*powerxtypes.DeleteBillingAddressReply, error) {
+func (c *MpTradeAddressBilling) DeleteBillingAddress(ctx context.Context, req *powerxtypes.DeleteBillingAddressRequest) (*powerxtypes.DeleteBillingAddressReply, error) {
 	res := &powerxtypes.DeleteBillingAddressReply{}
 	err := c.H.Df().Method(http.MethodDelete).
+		WithContext(ctx).
 		Uri(fmt.Sprintf("/api/v1/mp/trade/address/billing/%v", req.BillingAddressId)).
 		Json(req).
 		Result(res)

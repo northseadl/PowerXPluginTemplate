@@ -2,6 +2,8 @@ package powerx
 
 import (
 	"PluginTemplate/pkg/powerx/powerxtypes"
+	"context"
+
 	"net/http"
 )
 
@@ -9,9 +11,10 @@ type MpCustomerAuth struct {
 	*PowerX
 }
 
-func (c *MpCustomerAuth) Login(req *powerxtypes.MPCustomerLoginRequest) (*powerxtypes.MPCustomerLoginAuthReply, error) {
+func (c *MpCustomerAuth) Login(ctx context.Context, req *powerxtypes.MPCustomerLoginRequest) (*powerxtypes.MPCustomerLoginAuthReply, error) {
 	res := &powerxtypes.MPCustomerLoginAuthReply{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri("/api/v1/mp/customer/login").
 		Json(req).
 		Result(res)
@@ -21,9 +24,10 @@ func (c *MpCustomerAuth) Login(req *powerxtypes.MPCustomerLoginRequest) (*powerx
 	return res, nil
 }
 
-func (c *MpCustomerAuth) AuthByPhone(req *powerxtypes.MPCustomerAuthRequest) (*powerxtypes.MPCustomerLoginAuthReply, error) {
+func (c *MpCustomerAuth) AuthByPhone(ctx context.Context, req *powerxtypes.MPCustomerAuthRequest) (*powerxtypes.MPCustomerLoginAuthReply, error) {
 	res := &powerxtypes.MPCustomerLoginAuthReply{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri("/api/v1/mp/customer/authByPhone").
 		Json(req).
 		Result(res)
@@ -33,9 +37,10 @@ func (c *MpCustomerAuth) AuthByPhone(req *powerxtypes.MPCustomerAuthRequest) (*p
 	return res, nil
 }
 
-func (c *MpCustomerAuth) AuthByProfile() (*powerxtypes.MPCustomerLoginAuthReply, error) {
+func (c *MpCustomerAuth) AuthByProfile(ctx context.Context) (*powerxtypes.MPCustomerLoginAuthReply, error) {
 	res := &powerxtypes.MPCustomerLoginAuthReply{}
 	err := c.H.Df().Method(http.MethodPost).
+		WithContext(ctx).
 		Uri("/api/v1/mp/customer/authByProfile").
 		Result(res)
 	if err != nil {
