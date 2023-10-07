@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
-	"gopkg.in/yaml.v3"
 	"log/slog"
 	"path/filepath"
 )
+
+type Config interface{}
 
 func CreateRestConf(mode, name string) rest.RestConf {
 	if mode == "dev" {
@@ -34,9 +35,7 @@ func RegisterPlugin(host string, c any, restPlugin *Plugin) {
 	if err != nil {
 		slog.Error(fmt.Sprintf("Register plugin to host %s failed: %s", host, err.Error()))
 	}
-	content, err := yaml.Marshal(etcMap)
-	if err != nil {
-		slog.Error(fmt.Sprintf("Marshal etcMap failed: %s", err.Error()))
+	if err = DecodeMapToStruct(etcMap, c); err != nil {
+		return
 	}
-	err = yaml.Unmarshal(content, c)
 }
