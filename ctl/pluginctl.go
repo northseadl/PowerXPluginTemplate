@@ -14,6 +14,7 @@ func main() {
 		Usage: "pluginctl",
 		Commands: []*cli.Command{
 			plugin.BuildCmd,
+			plugin.NewCmd,
 		},
 	}
 

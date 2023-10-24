@@ -1,7 +1,13 @@
 package plugin
 
 type Info struct {
-	Name string `yaml:"name"`
+	Name        string `yaml:"name"`
+	Description string `yaml:"description"`
+	Version     string `yaml:"version"`
+	Metadata    struct {
+		Icon   string `yaml:"icon"`
+		Locale string `yaml:"locale"`
+	}
 }
 
 type BuildInfo struct {

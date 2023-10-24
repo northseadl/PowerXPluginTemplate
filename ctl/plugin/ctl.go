@@ -57,3 +57,15 @@ var BuildCmd = &cli.Command{
 		},
 	},
 }
+
+var NewCmd = &cli.Command{
+	Name:  "new",
+	Usage: "new plugin",
+	Action: func(c *cli.Context) error {
+		starter := NewStarter()
+		if err := starter.Start(); err != nil {
+			return err
+		}
+		return nil
+	},
+}
